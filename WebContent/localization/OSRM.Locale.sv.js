@@ -106,32 +106,32 @@ OSRM.Localization["sv"] = {
 "DIRECTION_11-x":"Kör in i rondellen och tag en av de allt för många avfarterna[ in på <b>%s</b>]",
 "DIRECTION_15":"Du är framme",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Schemalagt underhåll",
-"NOTIFICATION_MAINTENANCE_BODY":	"OSRM Websida ligger nere pga. schemalagt underhåll. " +
-									"Var god djöj till de nödvändiga uppdateringarna är slutförda. " +
-									"Sidan kommer vara upp snart." +
-									"<br/><br/>" +
-									"Under tiden kanske du vill kartlägga ditt närområde..." +
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Visste du att? Du kan ändra språk.",
-"NOTIFICATION_LOCALIZATION_BODY":	"Du kan använda menyn uppe till vänster för att välja ditt språk. " +
-									"<br/><br/>" +
-									"Frukta inte, om ditt språk inte finns. " +
-									"Du kan då hjälpa till och översätta OSRM till ditt språk! " +
-									"Visit <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>here</a> for more information.",
-"NOTIFICATION_CLICKING_HEADER":		"Visste du att? Du kan klicka på kartan för att lägga till ruttmarkörer.",
-"NOTIFICATION_CLICKING_BODY":		"Du kan klicka på kartan med vänster musknapp för att sätta startpunkt (grön) eller målpunkt (röd), " +
-									"om det redan finns en startpunkt. " +
-									"Addressen för den tillagda punkten kommer finnas i sökfälter till vänster. " +
-									"<br/><br/>" +
-									"Du kan ta bort en markör genom att återigen klicka på den.",
-"NOTIFICATION_DRAGGING_HEADER":		"Visste du att? Du kan dra i varje ruttmarkör på kartan.",
-"NOTIFICATION_DRAGGING_BODY":		"Du kan dra i varje ruttmarkör genom att klicka och hålla nere vänster musknapp på den och sedan dra densamma. " +
-									"Då kan du flytta ruttmarkören på kartan och rutten uppdateras automatiskt. " +
-									"<br/><br/>" +
-									"Du kan även skappa mellanpunktsmarkörer genom att dra någonstans på rutten! "
+"NOTIFICATION_MAINTENANCE_HEADER":  "Schemalagt underhåll",
+"NOTIFICATION_MAINTENANCE_BODY":  "OSRM Websida ligger nere pga. schemalagt underhåll. " +
+                  "Var god djöj till de nödvändiga uppdateringarna är slutförda. " +
+                  "Sidan kommer vara upp snart." +
+                  "<br/><br/>" +
+                  "Under tiden kanske du vill kartlägga ditt närområde..." +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Visste du att? Du kan ändra språk.",
+"NOTIFICATION_LOCALIZATION_BODY":  "Du kan använda menyn uppe till vänster för att välja ditt språk. " +
+                  "<br/><br/>" +
+                  "Frukta inte, om ditt språk inte finns. " +
+                  "Du kan då hjälpa till och översätta OSRM till ditt språk! " +
+                  "Visit <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>here</a> for more information.",
+"NOTIFICATION_CLICKING_HEADER":    "Visste du att? Du kan klicka på kartan för att lägga till ruttmarkörer.",
+"NOTIFICATION_CLICKING_BODY":    "Du kan klicka på kartan med vänster musknapp för att sätta startpunkt (grön) eller målpunkt (röd), " +
+                  "om det redan finns en startpunkt. " +
+                  "Addressen för den tillagda punkten kommer finnas i sökfälter till vänster. " +
+                  "<br/><br/>" +
+                  "Du kan ta bort en markör genom att återigen klicka på den.",
+"NOTIFICATION_DRAGGING_HEADER":    "Visste du att? Du kan dra i varje ruttmarkör på kartan.",
+"NOTIFICATION_DRAGGING_BODY":    "Du kan dra i varje ruttmarkör genom att klicka och hålla nere vänster musknapp på den och sedan dra densamma. " +
+                  "Då kan du flytta ruttmarkören på kartan och rutten uppdateras automatiskt. " +
+                  "<br/><br/>" +
+                  "Du kan även skappa mellanpunktsmarkörer genom att dra någonstans på rutten! "
 };
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("sv", true);
+  OSRM.Localization.setLanguage("sv", true);

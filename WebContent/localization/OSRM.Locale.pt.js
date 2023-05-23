@@ -157,36 +157,36 @@ OSRM.Localization["pt"] = {
 "HIGHWAY_raceway": "pista de corrida",
 "HIGHWAY_road": "estrada",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Manutenção Programada",
-"NOTIFICATION_MAINTENANCE_BODY":	"O site do OSRM está desligado devido a uma manutenção programada. " +
-									"Por favor, seja paciente enquanto as atualizações necessárias são realizadas. " +
-									"O site estará de volta online em breve." +
-									"<br/><br/>" +
-									"Entretanto poderá sair e mapear um bairro neighborhood perto de si..." +
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Você sabia? Você pode alterar o idioma do ecrã de exibição.",
-"NOTIFICATION_LOCALIZATION_BODY":	"Pode usar o menu suspenso no canto superior esquerdo para selecionar o seu idioma preferido. " +
-									"<br/><br/>" +
-									"Não desespere se não consegue encontrar o idioma de sua escolha. " +
-									"Se quiser, você pode ajudar a fornecer traduções adicionais! " +
-									"Visite <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>aqui</a> para mais informações.",
-"NOTIFICATION_CLICKING_HEADER":		"Você sabia? Você pode clicar no mapa para definir pontos da rota.",
-"NOTIFICATION_CLICKING_BODY":		"Clique no mapa com o botão esquerdo do rato para definir o ponto de origem (verde) ou o ponto de destino (vermelho), " +
-									"se o ponto de origem já existe. " +
-									"O endereço do local selecionado será exibido nas caixas à esquerda. " +
-									"<br/><br/>" +
-									"Pode excluir um ponto com um clique sobre ele novamente com o botão esquerdo do rato.",
-"NOTIFICATION_DRAGGING_HEADER":		"Você sabia? Você pode arrastar cada ponto da rota no mapa.",
-"NOTIFICATION_DRAGGING_BODY":		"Pode arrastar um ponto com um clique sobre ele com o botão esquerdo do rato e mantendo o botão pressionado. " +
-									"Então pode mover o ponto ao redor do mapa e a rota será atualizada instantaneamente. " +
-									"<br/><br/>" +
-									"You can even create intermediate markers by dragging them off of the main route! ",
-"NOTIFICATION_GEOCODERWAIT_HEADER":	"Esperando pelo Geocoder",
-"NOTIFICATION_GEOCODERWAIT_BODY":	"Esperando por resultados do  geocoder.",
-"NOTIFICATION_GEOCODERFAIL_HEADER":	"Falha do Geocoder",
-"NOTIFICATION_GEOCODERFAIL_BODY":	"Falha recuperando coordenadas do geocoder.",
+"NOTIFICATION_MAINTENANCE_HEADER":  "Manutenção Programada",
+"NOTIFICATION_MAINTENANCE_BODY":  "O site do OSRM está desligado devido a uma manutenção programada. " +
+                  "Por favor, seja paciente enquanto as atualizações necessárias são realizadas. " +
+                  "O site estará de volta online em breve." +
+                  "<br/><br/>" +
+                  "Entretanto poderá sair e mapear um bairro neighborhood perto de si..." +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Você sabia? Você pode alterar o idioma do ecrã de exibição.",
+"NOTIFICATION_LOCALIZATION_BODY":  "Pode usar o menu suspenso no canto superior esquerdo para selecionar o seu idioma preferido. " +
+                  "<br/><br/>" +
+                  "Não desespere se não consegue encontrar o idioma de sua escolha. " +
+                  "Se quiser, você pode ajudar a fornecer traduções adicionais! " +
+                  "Visite <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>aqui</a> para mais informações.",
+"NOTIFICATION_CLICKING_HEADER":    "Você sabia? Você pode clicar no mapa para definir pontos da rota.",
+"NOTIFICATION_CLICKING_BODY":    "Clique no mapa com o botão esquerdo do rato para definir o ponto de origem (verde) ou o ponto de destino (vermelho), " +
+                  "se o ponto de origem já existe. " +
+                  "O endereço do local selecionado será exibido nas caixas à esquerda. " +
+                  "<br/><br/>" +
+                  "Pode excluir um ponto com um clique sobre ele novamente com o botão esquerdo do rato.",
+"NOTIFICATION_DRAGGING_HEADER":    "Você sabia? Você pode arrastar cada ponto da rota no mapa.",
+"NOTIFICATION_DRAGGING_BODY":    "Pode arrastar um ponto com um clique sobre ele com o botão esquerdo do rato e mantendo o botão pressionado. " +
+                  "Então pode mover o ponto ao redor do mapa e a rota será atualizada instantaneamente. " +
+                  "<br/><br/>" +
+                  "You can even create intermediate markers by dragging them off of the main route! ",
+"NOTIFICATION_GEOCODERWAIT_HEADER":  "Esperando pelo Geocoder",
+"NOTIFICATION_GEOCODERWAIT_BODY":  "Esperando por resultados do  geocoder.",
+"NOTIFICATION_GEOCODERFAIL_HEADER":  "Falha do Geocoder",
+"NOTIFICATION_GEOCODERFAIL_BODY":  "Falha recuperando coordenadas do geocoder.",
 };
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("pt", true);
+  OSRM.Localization.setLanguage("pt", true);

@@ -131,30 +131,30 @@ OSRM.Localization["eo"] = {
 "DIRECTION_11-x":"ĉe la trafikcirklego, prenu iun grandnombran eliron[ sur la straton<b>%s</b>]",
 "DIRECTION_15":"Vi ĵus alvenis",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Planita Riparado",
-"NOTIFICATION_MAINTENANCE_BODY":	"Ni faras planitan riparadon ĉe la retejo OSRM. " +
-									"Bonvolu atendi dum kiam ni ĝisdatigas la servilon. " +
-									"La retejo baldaŭ denove ekfunkcios." +
-									"<br/><br/>" +
-									"Intertempe vi povus preni vian GPS-ilon kaj krajonon kaj plibonigi la mapon de via kvartalo..." +
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Ĉu vi sciis? Vi povas ŝanĝi la lingvon de la retejo.",
-"NOTIFICATION_LOCALIZATION_BODY":	"Uzu la falmenuon supre-maldekstre por elekti alian lingvon. " +
-									"<br/><br/>" +
-									"Se ne ĉeestas via preferata lingvo, ne zorgu. " +
-									"Se vi volas, vi povas aldoni tradukon al via lingvo! " +
-									"Vizitu <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>la retejon de la projekto</a> por pli da informoj.",
-"NOTIFICATION_CLICKING_HEADER":		"Ĉu vi sciis? Vi povas alklaki la mapon por aldoni vojpunktojn.",
-"NOTIFICATION_CLICKING_BODY":		"Vi povas alklaki la mapon por aldoni forirpunkton (verdan), aŭ alvenpunkton (ruĝan) " +
-									"se la forirpunkto jam estas sur la mapo. " +
-									"La adreso de la elektita loko montriĝos en la maldekstra kolumno. " +
-									"<br/><br/>" +
-									"Vi povas foriri markilon per dua klako sur ĝi.",
-"NOTIFICATION_DRAGGING_HEADER":		"Ĉu vi sciis? Vi povas treni la vojmarkilojn sur la mapo.",
-"NOTIFICATION_DRAGGING_BODY":		"Vi povas treni markilon per klako sur ĝi, ne lasante la musbutonon. " +
-									"Tiam vi povas movi la markilon sur la mapo kaj la vojo tuj ĝisdatiĝos. " +
-									"<br/><br/>" +
-									"Vi povas eĉ krei novajn markilojn se vi trenas ilin for de la vojo! ",
+"NOTIFICATION_MAINTENANCE_HEADER":  "Planita Riparado",
+"NOTIFICATION_MAINTENANCE_BODY":  "Ni faras planitan riparadon ĉe la retejo OSRM. " +
+                  "Bonvolu atendi dum kiam ni ĝisdatigas la servilon. " +
+                  "La retejo baldaŭ denove ekfunkcios." +
+                  "<br/><br/>" +
+                  "Intertempe vi povus preni vian GPS-ilon kaj krajonon kaj plibonigi la mapon de via kvartalo..." +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Ĉu vi sciis? Vi povas ŝanĝi la lingvon de la retejo.",
+"NOTIFICATION_LOCALIZATION_BODY":  "Uzu la falmenuon supre-maldekstre por elekti alian lingvon. " +
+                  "<br/><br/>" +
+                  "Se ne ĉeestas via preferata lingvo, ne zorgu. " +
+                  "Se vi volas, vi povas aldoni tradukon al via lingvo! " +
+                  "Vizitu <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>la retejon de la projekto</a> por pli da informoj.",
+"NOTIFICATION_CLICKING_HEADER":    "Ĉu vi sciis? Vi povas alklaki la mapon por aldoni vojpunktojn.",
+"NOTIFICATION_CLICKING_BODY":    "Vi povas alklaki la mapon por aldoni forirpunkton (verdan), aŭ alvenpunkton (ruĝan) " +
+                  "se la forirpunkto jam estas sur la mapo. " +
+                  "La adreso de la elektita loko montriĝos en la maldekstra kolumno. " +
+                  "<br/><br/>" +
+                  "Vi povas foriri markilon per dua klako sur ĝi.",
+"NOTIFICATION_DRAGGING_HEADER":    "Ĉu vi sciis? Vi povas treni la vojmarkilojn sur la mapo.",
+"NOTIFICATION_DRAGGING_BODY":    "Vi povas treni markilon per klako sur ĝi, ne lasante la musbutonon. " +
+                  "Tiam vi povas movi la markilon sur la mapo kaj la vojo tuj ĝisdatiĝos. " +
+                  "<br/><br/>" +
+                  "Vi povas eĉ krei novajn markilojn se vi trenas ilin for de la vojo! ",
 // do not translate below this line
 "GUI_LEGAL_NOTICE": "Routing by <a href='http://project-osrm.org/'>Project OSRM</a> - Geocoder by <a href='http://wiki.openstreetmap.org/wiki/Nominatim'>Nominatim</a> - OSRM hosting by <a href='http://algo2.iti.kit.edu/'>KIT</a>",
 "GUI_DATA_TIMESTAMP": "data: ",
@@ -164,4 +164,4 @@ OSRM.Localization["eo"] = {
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("eo", true);
+  OSRM.Localization.setLanguage("eo", true);

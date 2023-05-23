@@ -21,5 +21,5 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 // method to modify css classes
 L.DomUtil.changeClass = function (el, name, newName) {
-	el.className = L.Util.trim((' ' + el.className + ' ').replace(' ' + name + ' ', ' ' + newName + ' '));
+  el.className = L.Util.trim((' ' + el.className + ' ').replace(' ' + name + ' ', ' ' + newName + ' '));
 };

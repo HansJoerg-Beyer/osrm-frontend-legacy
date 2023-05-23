@@ -16,19 +16,19 @@ or see http://www.gnu.org/licenses/agpl.txt.
 */
 
 // OSRM old/cross browser support
-// [browser detection and routines for old/cross browser support] 
+// [browser detection and routines for old/cross browser support]
 
 
 // browser detection (runs anonymous function to prevent local variables cluttering global namespace)
 (function() {
-	var useragent = navigator.userAgent;
-	
-	OSRM.Browser = {
- 		FF3:	useragent.search(/Firefox\/3/),
- 		IE6_7:	useragent.search(/MSIE (6|7)/),
- 		IE6_8:	useragent.search(/MSIE (6|7|8)/),
-		IE6_9:	useragent.search(/MSIE (6|7|8|9)/)
-	};
+  var useragent = navigator.userAgent;
+
+  OSRM.Browser = {
+     FF3:  useragent.search(/Firefox\/3/),
+     IE6_7:  useragent.search(/MSIE (6|7)/),
+     IE6_8:  useragent.search(/MSIE (6|7|8)/),
+    IE6_9:  useragent.search(/MSIE (6|7|8|9)/)
+  };
 }());
 
 
@@ -49,35 +49,35 @@ OSRM.Browser.getElementsByClassName = function( node, classname ) {
 
 // call a function when DOM has finished loading and remove event handler (optionally pass a different window object)
 OSRM.Browser.onLoadHandler = function( function_pointer, the_window ) {
-	the_window = the_window || window;			// default document
-	var the_document = the_window.document;
-	
-	if(the_window.addEventListener) {			// FF, CH, IE9+
-		var temp_function = function() { 
-			the_window.removeEventListener("DOMContentLoaded", arguments.callee, false);
-			function_pointer.call();
-		};
-		the_window.addEventListener("DOMContentLoaded", temp_function, false);
-	}
+  the_window = the_window || window;      // default document
+  var the_document = the_window.document;
 
-	else if(the_document.attachEvent) {			// IE8-
-		var temp_function = function() { 
-			if ( the_document.readyState === "interactive" || the_document.readyState === "complete" ) { 
-				the_document.detachEvent("onreadystatechange", arguments.callee); 
-				function_pointer.call(); 
-			}
-		};
-		the_document.attachEvent("onreadystatechange", temp_function);
-	}
+  if(the_window.addEventListener) {      // FF, CH, IE9+
+    var temp_function = function() {
+      the_window.removeEventListener("DOMContentLoaded", arguments.callee, false);
+      function_pointer.call();
+    };
+    the_window.addEventListener("DOMContentLoaded", temp_function, false);
+  }
+
+  else if(the_document.attachEvent) {      // IE8-
+    var temp_function = function() {
+      if ( the_document.readyState === "interactive" || the_document.readyState === "complete" ) {
+        the_document.detachEvent("onreadystatechange", arguments.callee);
+        function_pointer.call();
+      }
+    };
+    the_document.attachEvent("onreadystatechange", temp_function);
+  }
 };
 OSRM.Browser.onUnloadHandler = function( function_pointer, the_window ) {
-	the_window = the_window || window;			// default document
-	var the_document = the_window.document;
-	
-	if(the_window.addEventListener) {			// FF, CH, IE9+
-		the_window.addEventListener("unload", function_pointer, false);
-	}
-	else if(the_document.attachEvent) {			// IE8-
-		the_document.attachEvent("onunload", function_pointer);
-	}
+  the_window = the_window || window;      // default document
+  var the_document = the_window.document;
+
+  if(the_window.addEventListener) {      // FF, CH, IE9+
+    the_window.addEventListener("unload", function_pointer, false);
+  }
+  else if(the_document.attachEvent) {      // IE8-
+    the_document.attachEvent("onunload", function_pointer);
+  }
 };

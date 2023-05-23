@@ -157,36 +157,36 @@ OSRM.Localization["nl"] = {
 "HIGHWAY_raceway": "racecircuit",
 "HIGHWAY_road": "weg",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Gepland onderhoud",
-"NOTIFICATION_MAINTENANCE_BODY":	"De website van OSRM Website is gesloten wegens gepland onderhoud. " +
-									"Even geduld aub terwijl de vereiste updates worde uitgevoerd. " +
-									"De site zal op korte termijn weer beschikbaar zijn." +
-									"<br/><br/>" +
-									"In de tussentijd wilt u misschien naar buiten gaan en een nabije vriendelijke buurt in kaart brengen..." +
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Wist u dat...? U de taal voor de weergave kunt wijzigen.",
-"NOTIFICATION_LOCALIZATION_BODY":	"U kunt het openklapmenu in de linker bovenhoek gebruiken om uw favoriete taal te kiezen. " +
-									"<br/><br/>" +
-									"Raak niet in paniek als u de door u gewenste keuze voor de taal niet kunt vinden. " +
-									"Als u wilt kunt u helpen door aanvullend evertalingen te leveren! " +
-									"Kijk <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>hier</a> voor meer informatie.",
-"NOTIFICATION_CLICKING_HEADER":		"Wist u dat...? U op de kaart kunt klikken om markeringen voor de route te plaatsen.",
-"NOTIFICATION_CLICKING_BODY":		"Klik met de linker muisknop op de kaart om een markering voor het beginpunt (groen) of bestemming (rood) te plaatsen, " +
-									"ald de marking voor het beginpunt al bestaat. " +
-									"Het adres van de geselecteerde locatie zal worden weergegeven in fe vakken aan de linkerkant. " +
-									"<br/><br/>" +
-									"U kunt eenmarkering verwijderen door er nogmaals op te klikken met de linker muisknop.",
-"NOTIFICATION_DRAGGING_HEADER":		"Wist u dat...? U elke markering voor de route op de kaart kunt slepen.",
-"NOTIFICATION_DRAGGING_BODY":		"U kunt een markering slepen door er op te klikken met de linker muisknop en de knop ingedrukt te houden. " +
-									"Kan kunt u de markerering over de kaart verplaatsen en de route zal tegelijkertijd worden bijgewerkt. " +
-									"<br/><br/>" +
-									"U kunt zelfs tussenliggende markeringen maken door ze van de hoofdroute te slepen! ",
-"NOTIFICATION_GEOCODERWAIT_HEADER":	"Wachten op Geocoder",
-"NOTIFICATION_GEOCODERWAIT_BODY":	"Wachten on resultaten van geocoder.",
-"NOTIFICATION_GEOCODERFAIL_HEADER":	"Geocoder mislukt",
-"NOTIFICATION_GEOCODERFAIL_BODY":	"Ophalen van coördinaten van geocoder mislukt.",
+"NOTIFICATION_MAINTENANCE_HEADER":  "Gepland onderhoud",
+"NOTIFICATION_MAINTENANCE_BODY":  "De website van OSRM Website is gesloten wegens gepland onderhoud. " +
+                  "Even geduld aub terwijl de vereiste updates worde uitgevoerd. " +
+                  "De site zal op korte termijn weer beschikbaar zijn." +
+                  "<br/><br/>" +
+                  "In de tussentijd wilt u misschien naar buiten gaan en een nabije vriendelijke buurt in kaart brengen..." +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Wist u dat...? U de taal voor de weergave kunt wijzigen.",
+"NOTIFICATION_LOCALIZATION_BODY":  "U kunt het openklapmenu in de linker bovenhoek gebruiken om uw favoriete taal te kiezen. " +
+                  "<br/><br/>" +
+                  "Raak niet in paniek als u de door u gewenste keuze voor de taal niet kunt vinden. " +
+                  "Als u wilt kunt u helpen door aanvullend evertalingen te leveren! " +
+                  "Kijk <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>hier</a> voor meer informatie.",
+"NOTIFICATION_CLICKING_HEADER":    "Wist u dat...? U op de kaart kunt klikken om markeringen voor de route te plaatsen.",
+"NOTIFICATION_CLICKING_BODY":    "Klik met de linker muisknop op de kaart om een markering voor het beginpunt (groen) of bestemming (rood) te plaatsen, " +
+                  "ald de marking voor het beginpunt al bestaat. " +
+                  "Het adres van de geselecteerde locatie zal worden weergegeven in fe vakken aan de linkerkant. " +
+                  "<br/><br/>" +
+                  "U kunt eenmarkering verwijderen door er nogmaals op te klikken met de linker muisknop.",
+"NOTIFICATION_DRAGGING_HEADER":    "Wist u dat...? U elke markering voor de route op de kaart kunt slepen.",
+"NOTIFICATION_DRAGGING_BODY":    "U kunt een markering slepen door er op te klikken met de linker muisknop en de knop ingedrukt te houden. " +
+                  "Kan kunt u de markerering over de kaart verplaatsen en de route zal tegelijkertijd worden bijgewerkt. " +
+                  "<br/><br/>" +
+                  "U kunt zelfs tussenliggende markeringen maken door ze van de hoofdroute te slepen! ",
+"NOTIFICATION_GEOCODERWAIT_HEADER":  "Wachten op Geocoder",
+"NOTIFICATION_GEOCODERWAIT_BODY":  "Wachten on resultaten van geocoder.",
+"NOTIFICATION_GEOCODERFAIL_HEADER":  "Geocoder mislukt",
+"NOTIFICATION_GEOCODERFAIL_BODY":  "Ophalen van coördinaten van geocoder mislukt.",
 };
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("nl", true);
+  OSRM.Localization.setLanguage("nl", true);

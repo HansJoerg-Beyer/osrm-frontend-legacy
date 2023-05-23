@@ -23,42 +23,42 @@ or see http://www.gnu.org/licenses/agpl.txt.
 (function() {
 var _inheritFromHelper = function() {};
 OSRM.inheritFrom = function( sub_class, base_class ) {
-	_inheritFromHelper.prototype = base_class.prototype;
-	sub_class.prototype = new _inheritFromHelper();
-	sub_class.prototype.constructor = sub_class;
-	sub_class.prototype.base = base_class.prototype;
+  _inheritFromHelper.prototype = base_class.prototype;
+  sub_class.prototype = new _inheritFromHelper();
+  sub_class.prototype.constructor = sub_class;
+  sub_class.prototype.base = base_class.prototype;
 };
 }());
 
 
 // extend prototypes of a class -> used to add member values and functions
 OSRM.extend = function( target_class, properties ) {
-	for( property in properties ) {
-		target_class.prototype[property] = properties[property];
-	}
+  for( property in properties ) {
+    target_class.prototype[property] = properties[property];
+  }
 };
 
 
 // bind a function to an execution context, i.e. an object (needed for correcting this pointers)
 OSRM.bind = function( context, fct1 ) {
-	return function() {
-		fct1.apply(context, arguments);
-	};
+  return function() {
+    fct1.apply(context, arguments);
+  };
 };
 
 
 // concatenate the execution of two functions with the same set of parameters
 OSRM.concat = function( fct1, fct2 ) {
-	return function() { 
-		fct1.apply(this,arguments); 
-		fct2.apply(this,arguments); 
-	};
+  return function() {
+    fct1.apply(this,arguments);
+    fct2.apply(this,arguments);
+  };
 };
 
 
 // [usage of convenience functions]
 // SubClass = function() {
-// 	SubClass.prototype.base.constructor.apply(this, arguments);
+//   SubClass.prototype.base.constructor.apply(this, arguments);
 // }
 // OSRM.inheritFrom( SubClass, BaseClass );
 // OSRM.extend( SubClass, { property:value } );

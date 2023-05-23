@@ -16,91 +16,91 @@ or see http://www.gnu.org/licenses/agpl.txt.
 */
 
 // OSRM routes
-// [drawing of all types of route geometry] 
+// [drawing of all types of route geometry]
 
 
 // simple route class (wraps Leaflet Polyline)
 OSRM.SimpleRoute = function (label, style) {
-	this.label = (label ? label : "route");
-	this.route = new L.Polyline( [], style );
-	this.shown = false;
-	
- 	this.route.on('click', this.onClick); 	
+  this.label = (label ? label : "route");
+  this.route = new L.Polyline( [], style );
+  this.shown = false;
+
+   this.route.on('click', this.onClick);
 };
 OSRM.extend( OSRM.SimpleRoute,{
 show: function() {
-	OSRM.G.map.addLayer(this.route);
-	this.shown = true;
+  OSRM.G.map.addLayer(this.route);
+  this.shown = true;
 },
 hide: function() {
-	OSRM.G.map.removeLayer(this.route);
-	this.shown = false;
+  OSRM.G.map.removeLayer(this.route);
+  this.shown = false;
 },
 isShown: function() {
-	return this.shown;
+  return this.shown;
 },
 getPoints: function() {
-	return this.route._originalPoints;
+  return this.route._originalPoints;
 },
 getPositions: function() {
-	return this.route.getLatLngs();
+  return this.route.getLatLngs();
 },
 setPositions: function(positions) {
-	this.route.setLatLngs( positions );
+  this.route.setLatLngs( positions );
 },
 setStyle: function(style) {
-	this.route.setStyle(style);
+  this.route.setStyle(style);
 },
 centerView: function() {
-	var bounds = new L.LatLngBounds( this.getPositions() );
-	OSRM.g.map.fitBoundsUI( bounds );
+  var bounds = new L.LatLngBounds( this.getPositions() );
+  OSRM.g.map.fitBoundsUI( bounds );
 },
 onClick: function(e) {
-	if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )	// only create markers on simple clicks
-		return;	
-	var new_via_index = Math.max( 0, OSRM.Via.findViaIndex( e.latlng ) );
-	var index = OSRM.G.markers.setVia( new_via_index, e.latlng );
-	OSRM.G.markers.route[index].show();
-	
-	OSRM.Routing.getRoute();
+  if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )  // only create markers on simple clicks
+    return;
+  var new_via_index = Math.max( 0, OSRM.Via.findViaIndex( e.latlng ) );
+  var index = OSRM.G.markers.setVia( new_via_index, e.latlng );
+  OSRM.G.markers.route[index].show();
+
+  OSRM.Routing.getRoute();
 },
 toString: function() {
-	return "OSRM.Route("+ this.label + ", " + this.route.getLatLngs().length + " points)";
+  return "OSRM.Route("+ this.label + ", " + this.route.getLatLngs().length + " points)";
 }
 });
 
 
 // multiroute class (wraps Leaflet LayerGroup to hold several disjoint routes)
 OSRM.MultiRoute = function (label) {
-	this.label = (label ? label : "multiroute");
-	this.route = new L.LayerGroup();
+  this.label = (label ? label : "multiroute");
+  this.route = new L.LayerGroup();
 
-	this.shown = false;
+  this.shown = false;
 };
 OSRM.extend( OSRM.MultiRoute,{
 show: function() {
-	OSRM.G.map.addLayer(this.route);
-	this.shown = true;
+  OSRM.G.map.addLayer(this.route);
+  this.shown = true;
 },
 hide: function() {
-	OSRM.G.map.removeLayer(this.route);
-	this.shown = false;
+  OSRM.G.map.removeLayer(this.route);
+  this.shown = false;
 },
 isShown: function() {
-	return this.shown;
+  return this.shown;
 },
 addRoute: function(positions) {
-	var line = new L.Polyline( positions );
-	line.on('click', function(e) { OSRM.G.route.fire('click',e); });
-	this.route.addLayer( line );
+  var line = new L.Polyline( positions );
+  line.on('click', function(e) { OSRM.G.route.fire('click',e); });
+  this.route.addLayer( line );
 },
 clearRoutes: function() {
-	this.route.clearLayers();
+  this.route.clearLayers();
 },
 setStyle: function(style) {
-	this.route.invoke('setStyle', style);
+  this.route.invoke('setStyle', style);
 },
 toString: function() {
-	return "OSRM.MultiRoute("+ this.label + ")";
+  return "OSRM.MultiRoute("+ this.label + ")";
 }
 });

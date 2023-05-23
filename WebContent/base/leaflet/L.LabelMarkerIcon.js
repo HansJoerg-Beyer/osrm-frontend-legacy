@@ -19,59 +19,59 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // [icon class with extra label and simple icon changing]
 
 
-// extended icon class 
+// extended icon class
 L.LabelMarkerIcon = L.Icon.extend({
-	// altered icon creation (with label)
-	_createImg: function (src) {
-		var el;
-		if (!L.Browser.ie6) {
-			el = document.createElement('div');
-			
-			var img = document.createElement('img');
-			var num = document.createElement('div');
-			img.src = src;
-			num.className = 'via-counter';
-			num.innerHTML = "";
-			
-			el.appendChild(img);
-			el.appendChild(num);
-		} else {
-			el = document.createElement('div');
-			el.style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + src + '")';
-		}
-		return el;
-	},
+  // altered icon creation (with label)
+  _createImg: function (src) {
+    var el;
+    if (!L.Browser.ie6) {
+      el = document.createElement('div');
 
-	// non-destructive icon changing
-	changeIcon: function (el) {
-		return this._changeIcon('icon', el);
-	},
+      var img = document.createElement('img');
+      var num = document.createElement('div');
+      img.src = src;
+      num.className = 'via-counter';
+      num.innerHTML = "";
 
-	changeShadow: function (el) {
-		return this.options.shadowUrl ? this._changeIcon('shadow', el) : null;
-	},
-	
-	_changeIcon: function (name, el) {
-		var src = this._getIconUrl(name);
-		if (!src) {
-			if (name === 'icon') {
-				throw new Error("iconUrl not set in Icon options (see the docs).");
-			}
-			return null;
-		}		
-		
-		var img = this._changeImg(src, el);
-		this._setIconStyles(img, name);
-		
-		return img;
-	},	
-	
-	_changeImg: function (src, el) {
-		if (!L.Browser.ie6) {
-			el.firstChild.src = src;
-		} else {
-			el.style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + src + '")';
-		}
-		return el;
-	}
+      el.appendChild(img);
+      el.appendChild(num);
+    } else {
+      el = document.createElement('div');
+      el.style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + src + '")';
+    }
+    return el;
+  },
+
+  // non-destructive icon changing
+  changeIcon: function (el) {
+    return this._changeIcon('icon', el);
+  },
+
+  changeShadow: function (el) {
+    return this.options.shadowUrl ? this._changeIcon('shadow', el) : null;
+  },
+
+  _changeIcon: function (name, el) {
+    var src = this._getIconUrl(name);
+    if (!src) {
+      if (name === 'icon') {
+        throw new Error("iconUrl not set in Icon options (see the docs).");
+      }
+      return null;
+    }
+
+    var img = this._changeImg(src, el);
+    this._setIconStyles(img, name);
+
+    return img;
+  },
+
+  _changeImg: function (src, el) {
+    if (!L.Browser.ie6) {
+      el.firstChild.src = src;
+    } else {
+      el.style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + src + '")';
+    }
+    return el;
+  }
 });

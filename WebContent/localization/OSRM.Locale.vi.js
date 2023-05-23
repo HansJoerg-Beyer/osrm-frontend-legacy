@@ -157,34 +157,34 @@ OSRM.Localization["vi"] = {
 "HIGHWAY_raceway": "đường đua",
 "HIGHWAY_road": "đường",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Đang Bảo quản theo Chương trình",
-"NOTIFICATION_MAINTENANCE_BODY":	"Trang OSRM đang ngừng hoạt động một cách mong đợi để được bảo quản. " + 
-									"Xin vui lòng chờ đợi trong lúc thực hiện việc cập nhật cần thiết. " +
-									"Trang sẽ tiếp tục hoạt động trực tuyến không lâu." +
-									"<br/><br/>" + 
-									"Trong lúc chờ đợi, gợi ý bạn cải thiện hàng xóm của bạn trên bản đồ…" + 
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Bạn có biết? Bạn có thể thay đổi ngôn ngữ hiển thị.",
-"NOTIFICATION_LOCALIZATION_BODY":	"Bạn có thể thả xuống trình đơn ở góc trái bên trên để chọn một ngôn ngữ khác. " +
-									"<br/><br/>" +
-									"Không thất vọng nếu không tìm được ngôn ngữ của bạn. " +
-									"Mời bạn cung cấp thêm bản dịch! " +
-									"Hãy ghé thăm <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>trang dự án</a> để biết thêm thông tin.",
-"NOTIFICATION_CLICKING_HEADER":		"Bạn có biết? Bạn có thể nhấn chuột vào bản đồ để đánh ghim tuyến đường.",
-"NOTIFICATION_CLICKING_BODY":		"Nhấn chuột trái vào bản đồ để đánh ghim vào nơi bắt đầu (màu xanh), hoặc nơi đi tới (màu đỏ), " +
-									"nếu đã đánh ghim bắt đầu. " +
-									"Địa chỉ của địa điểm được chọn sẽ xuất hiện vào các hộp bên phải. " + 
-									"<br/><br/>" +
-									"Để xóa ghim, nhấn chuột trái vào nó một lần nữa.",
-"NOTIFICATION_DRAGGING_HEADER":		"Bạn có biết? Bạn có thể kéo các ghim tuyến đường trên bản đồ.",
-"NOTIFICATION_DRAGGING_BODY":		"Để kéo ghim, nhấn giữ chuột trái vào nó và di chuyển ghim trên bản đồ. " +
-									"Tuyến đường sẽ được cập nhật ngay lập tức. " +
-									"<br/><br/>" +
-									"Để ghé vào thêm nơi nửa đường, kéo ghim từ tuyến đường chính! ",
-"NOTIFICATION_GEOCODERWAIT_HEADER":	"Đang chờ Trình định vị",
-"NOTIFICATION_GEOCODERWAIT_BODY":	"Đang chờ trình định vị cho ra kết quả.",
-"NOTIFICATION_GEOCODERFAIL_HEADER":	"Trình định vị Thất bại",
-"NOTIFICATION_GEOCODERFAIL_BODY":	"Đã thất bại khi lấy tọa độ từ trình định vị.",
+"NOTIFICATION_MAINTENANCE_HEADER":  "Đang Bảo quản theo Chương trình",
+"NOTIFICATION_MAINTENANCE_BODY":  "Trang OSRM đang ngừng hoạt động một cách mong đợi để được bảo quản. " +
+                  "Xin vui lòng chờ đợi trong lúc thực hiện việc cập nhật cần thiết. " +
+                  "Trang sẽ tiếp tục hoạt động trực tuyến không lâu." +
+                  "<br/><br/>" +
+                  "Trong lúc chờ đợi, gợi ý bạn cải thiện hàng xóm của bạn trên bản đồ…" +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Bạn có biết? Bạn có thể thay đổi ngôn ngữ hiển thị.",
+"NOTIFICATION_LOCALIZATION_BODY":  "Bạn có thể thả xuống trình đơn ở góc trái bên trên để chọn một ngôn ngữ khác. " +
+                  "<br/><br/>" +
+                  "Không thất vọng nếu không tìm được ngôn ngữ của bạn. " +
+                  "Mời bạn cung cấp thêm bản dịch! " +
+                  "Hãy ghé thăm <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>trang dự án</a> để biết thêm thông tin.",
+"NOTIFICATION_CLICKING_HEADER":    "Bạn có biết? Bạn có thể nhấn chuột vào bản đồ để đánh ghim tuyến đường.",
+"NOTIFICATION_CLICKING_BODY":    "Nhấn chuột trái vào bản đồ để đánh ghim vào nơi bắt đầu (màu xanh), hoặc nơi đi tới (màu đỏ), " +
+                  "nếu đã đánh ghim bắt đầu. " +
+                  "Địa chỉ của địa điểm được chọn sẽ xuất hiện vào các hộp bên phải. " +
+                  "<br/><br/>" +
+                  "Để xóa ghim, nhấn chuột trái vào nó một lần nữa.",
+"NOTIFICATION_DRAGGING_HEADER":    "Bạn có biết? Bạn có thể kéo các ghim tuyến đường trên bản đồ.",
+"NOTIFICATION_DRAGGING_BODY":    "Để kéo ghim, nhấn giữ chuột trái vào nó và di chuyển ghim trên bản đồ. " +
+                  "Tuyến đường sẽ được cập nhật ngay lập tức. " +
+                  "<br/><br/>" +
+                  "Để ghé vào thêm nơi nửa đường, kéo ghim từ tuyến đường chính! ",
+"NOTIFICATION_GEOCODERWAIT_HEADER":  "Đang chờ Trình định vị",
+"NOTIFICATION_GEOCODERWAIT_BODY":  "Đang chờ trình định vị cho ra kết quả.",
+"NOTIFICATION_GEOCODERFAIL_HEADER":  "Trình định vị Thất bại",
+"NOTIFICATION_GEOCODERFAIL_BODY":  "Đã thất bại khi lấy tọa độ từ trình định vị.",
 // do not translate below this line
 "GUI_LEGAL_NOTICE": "Routing by <a href='http://project-osrm.org/'>Project OSRM</a> - Geocoder by <a href='http://wiki.openstreetmap.org/wiki/Nominatim'>Nominatim</a> - OSRM hosting by <a href='http://algo2.iti.kit.edu/'>KIT</a>",
 "GUI_DATA_TIMESTAMP": "data: ",
@@ -194,4 +194,4 @@ OSRM.Localization["vi"] = {
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("vi", true);
+  OSRM.Localization.setLanguage("vi", true);

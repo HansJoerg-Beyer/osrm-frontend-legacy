@@ -125,30 +125,30 @@ OSRM.Localization["ca"] = {
 "DIRECTION_11-x":"Entreu a la rotonda i sortiu per una de les moltes sortides (per <b>%s</b>)",
 "DIRECTION_15":"Heu arribat a la destinació",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Aturada per manteniment programada",
-"NOTIFICATION_MAINTENANCE_BODY":	"El lloc web de l'OSRM és fora de servei per a fer-ne manteniment. " +
-									"Tingueu paciència mentre es realitzen les actualitzacions. " +
-									"El web tornarà a ser funcional ben aviat." +
-									"<br/><br/>" +
-									"Mentrestant, si voleu podeu sortir fora i mapar un barri proper..." +
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Sabíeu que... podeu canviar la llengua?",
-"NOTIFICATION_LOCALIZATION_BODY":	"You can use the pulldown menu in the upper left corner to select your favorite language. " +
-									"<br/><br/>" +
-									"No defalliu si la vostra llengua no és disponible. " +
-									"Si voleu, poden ajudar propocionant-nos noves traduccions! " +
-									"Aneu <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>aquí</a> per a més informació.",
-"NOTIFICATION_CLICKING_HEADER":		"Sabíeu que... podeu clicar al mapa per posar-hi punts de ruta?",
-"NOTIFICATION_CLICKING_BODY":		"Podeu clicar al mapa amb el botó primari del ratolí per establir el punt d'inici (verd) o un punt final (vermell), " +
-									"si el punt d'inici ja existeix. " +
-									"L'adreça de l'ubicació seleccionada es mostrarà en les caixes de l'esquerra. " +
-									"<br/><br/>" +
-									"Podeu suprimir un punt clicant-hi altra vegada amb el botó primari del ratolí.",
-"NOTIFICATION_DRAGGING_HEADER":		"Sabíeu que... podeu arrossegar cada punt de ruta del mapa?",
-"NOTIFICATION_DRAGGING_BODY":		"Podeu arrossegar un punt clicant-hi am bel botó primari del ratolí i mantenint el botó premut. " +
-									"Aleshores, podeu moure el punt pel mapa i la ruta s'actualitzarà instantàniament. " +
-									"<br/><br/>" +
-									"Fins i tot podeu crear punts intermitjos arrossegant-los fora de la ruta principal! ",
+"NOTIFICATION_MAINTENANCE_HEADER":  "Aturada per manteniment programada",
+"NOTIFICATION_MAINTENANCE_BODY":  "El lloc web de l'OSRM és fora de servei per a fer-ne manteniment. " +
+                  "Tingueu paciència mentre es realitzen les actualitzacions. " +
+                  "El web tornarà a ser funcional ben aviat." +
+                  "<br/><br/>" +
+                  "Mentrestant, si voleu podeu sortir fora i mapar un barri proper..." +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Sabíeu que... podeu canviar la llengua?",
+"NOTIFICATION_LOCALIZATION_BODY":  "You can use the pulldown menu in the upper left corner to select your favorite language. " +
+                  "<br/><br/>" +
+                  "No defalliu si la vostra llengua no és disponible. " +
+                  "Si voleu, poden ajudar propocionant-nos noves traduccions! " +
+                  "Aneu <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>aquí</a> per a més informació.",
+"NOTIFICATION_CLICKING_HEADER":    "Sabíeu que... podeu clicar al mapa per posar-hi punts de ruta?",
+"NOTIFICATION_CLICKING_BODY":    "Podeu clicar al mapa amb el botó primari del ratolí per establir el punt d'inici (verd) o un punt final (vermell), " +
+                  "si el punt d'inici ja existeix. " +
+                  "L'adreça de l'ubicació seleccionada es mostrarà en les caixes de l'esquerra. " +
+                  "<br/><br/>" +
+                  "Podeu suprimir un punt clicant-hi altra vegada amb el botó primari del ratolí.",
+"NOTIFICATION_DRAGGING_HEADER":    "Sabíeu que... podeu arrossegar cada punt de ruta del mapa?",
+"NOTIFICATION_DRAGGING_BODY":    "Podeu arrossegar un punt clicant-hi am bel botó primari del ratolí i mantenint el botó premut. " +
+                  "Aleshores, podeu moure el punt pel mapa i la ruta s'actualitzarà instantàniament. " +
+                  "<br/><br/>" +
+                  "Fins i tot podeu crear punts intermitjos arrossegant-los fora de la ruta principal! ",
 // do not translate below this line
 "GUI_LEGAL_NOTICE": "Routing by <a href='http://project-osrm.org/'>Project OSRM</a> - Geocoder by <a href='http://wiki.openstreetmap.org/wiki/Nominatim'>Nominatim</a> - OSRM hosting by <a href='http://algo2.iti.kit.edu/'>KIT</a>",
 "GUI_DATA_TIMESTAMP": "data: ",
@@ -158,4 +158,4 @@ OSRM.Localization["ca"] = {
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("ca", true);
+  OSRM.Localization.setLanguage("ca", true);

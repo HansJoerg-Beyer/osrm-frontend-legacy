@@ -21,40 +21,40 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 // extended marker class
 L.LabelMarker = L.Marker.extend({
-	// change marker icon
-	changeIcon: function( icon ) {
-		this.options.icon = icon;
+  // change marker icon
+  changeIcon: function( icon ) {
+    this.options.icon = icon;
 
-		if (this._map) {
-			this._changeIcon();
-		}
-	},
+    if (this._map) {
+      this._changeIcon();
+    }
+  },
 
-	// add/change marker label
-	setLabel: function( label ) {
-		if(this._icon) {
-			this._icon.lastChild.innerHTML=label;
-			this._icon.lastChild.style.display = "block";
-		}
-	},
-	
-	// add/change marker tooltip
-	setTitle: function ( title ) {
-		this.options.title = title;
-		this._icon.title = title;
-	},
-	
-	// actual icon changing routine
-	_changeIcon: function () {
-		var options = this.options,
-	    	map = this._map,
-	    	animation = (map.options.zoomAnimation && map.options.markerZoomAnimation),
-	    	classToAdd = animation ? 'leaflet-zoom-animated' : 'leaflet-zoom-hide';
+  // add/change marker label
+  setLabel: function( label ) {
+    if(this._icon) {
+      this._icon.lastChild.innerHTML=label;
+      this._icon.lastChild.style.display = "block";
+    }
+  },
 
-		if (this._icon) {
-			this._icon = options.icon.changeIcon( this._icon );
-			L.DomUtil.addClass(this._icon, classToAdd);
-			L.DomUtil.addClass(this._icon, 'leaflet-clickable');
-		}
-	}
+  // add/change marker tooltip
+  setTitle: function ( title ) {
+    this.options.title = title;
+    this._icon.title = title;
+  },
+
+  // actual icon changing routine
+  _changeIcon: function () {
+    var options = this.options,
+        map = this._map,
+        animation = (map.options.zoomAnimation && map.options.markerZoomAnimation),
+        classToAdd = animation ? 'leaflet-zoom-animated' : 'leaflet-zoom-hide';
+
+    if (this._icon) {
+      this._icon = options.icon.changeIcon( this._icon );
+      L.DomUtil.addClass(this._icon, classToAdd);
+      L.DomUtil.addClass(this._icon, 'leaflet-clickable');
+    }
+  }
 });

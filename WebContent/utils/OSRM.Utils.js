@@ -20,9 +20,9 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 
 OSRM.Utils = {
-		
+
 // [human readabilty sizes]
-		
+
 // abbreviations cache
 seconds: 's',
 minutes: 'min',
@@ -34,13 +34,13 @@ meters: 'm',
 
 // update abbreviation cache
 updateAbbreviationCache: function() {
-	OSRM.Utils.seconds = OSRM.loc("GUI_S");
-	OSRM.Utils.minutes = OSRM.loc("GUI_MIN");
-	OSRM.Utils.hours = OSRM.loc("GUI_H");
-	OSRM.Utils.miles = OSRM.loc("GUI_MI");
-	OSRM.Utils.feet = OSRM.loc("GUI_FT");
-	OSRM.Utils.kilometers = OSRM.loc("GUI_KM");
-	OSRM.Utils.meters = OSRM.loc("GUI_M");
+  OSRM.Utils.seconds = OSRM.loc("GUI_S");
+  OSRM.Utils.minutes = OSRM.loc("GUI_MIN");
+  OSRM.Utils.hours = OSRM.loc("GUI_H");
+  OSRM.Utils.miles = OSRM.loc("GUI_MI");
+  OSRM.Utils.feet = OSRM.loc("GUI_FT");
+  OSRM.Utils.kilometers = OSRM.loc("GUI_KM");
+  OSRM.Utils.meters = OSRM.loc("GUI_M");
 },
 
 // human readable time
@@ -57,24 +57,24 @@ toHumanTime: function(seconds){
 },
 //human readable distance
 toHumanDistanceMeters: function(meters){
-	var distance = parseInt(meters);
-	
-	distance = distance / 1000;
-	if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.kilometers; }
-	else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.kilometers; }
-	else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.kilometers; }
-	else if(distance >= 0){ return (distance*1000).toFixed(0)+'&nbsp;' + OSRM.Utils.meters; }
-	else {return "N/A";}
+  var distance = parseInt(meters);
+
+  distance = distance / 1000;
+  if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.kilometers; }
+  else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.kilometers; }
+  else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.kilometers; }
+  else if(distance >= 0){ return (distance*1000).toFixed(0)+'&nbsp;' + OSRM.Utils.meters; }
+  else {return "N/A";}
 },
 toHumanDistanceMiles: function(meters){
-	var distance = parseInt(meters);
-	
-	distance = distance / 1609.344;
-	if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.miles; }
-	else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.miles; }
-	else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.miles; }
-	else if(distance >= 0){ return (distance*5280).toFixed(0)+'&nbsp;' + OSRM.Utils.feet; }
-	else {return "N/A";}
+  var distance = parseInt(meters);
+
+  distance = distance / 1609.344;
+  if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.miles; }
+  else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.miles; }
+  else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.miles; }
+  else if(distance >= 0){ return (distance*5280).toFixed(0)+'&nbsp;' + OSRM.Utils.feet; }
+  else {return "N/A";}
 },
 toHumanDistance: null,
 
@@ -83,19 +83,19 @@ toHumanDistance: null,
 
 // verify angles
 isLatitude: function(value) {
-	if( value >=-90 && value <=90)
-		return true;
-	else
-		return false;
+  if( value >=-90 && value <=90)
+    return true;
+  else
+    return false;
 },
 isLongitude: function(value) {
-	if( value >=-180 && value <=180)
-		return true;
-	else
-		return false;
+  if( value >=-180 && value <=180)
+    return true;
+  else
+    return false;
 },
 isNumber: function(n) {
-	  return !isNaN(parseFloat(n)) && isFinite(n);
+    return !isNaN(parseFloat(n)) && isFinite(n);
 },
 
 
@@ -103,7 +103,7 @@ isNumber: function(n) {
 
 //hashing as in JAVA (thanks to lordvlad @ stackoverflow)
 getHash: function(s) {
-	return s.split("").reduce( function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a;}, 0);              
+  return s.split("").reduce( function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a;}, 0);
 }
 
 };

@@ -23,111 +23,111 @@ TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF TH
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// Attribution control 
+// Attribution control
 // [modified to support postfix (reason: add static OSM data attribution to dynamic Bing imagery attributions) ]
 
 OSRM.Control.Attribution = L.Control.extend({
-	options: {
-		position: 'bottomright',
-		prefix: 'Powered by <a href="http://leaflet.cloudmade.com">Leaflet</a>',
-		postfix: ''
-	},
+  options: {
+    position: 'bottomright',
+    prefix: 'Powered by <a href="http://leaflet.cloudmade.com">Leaflet</a>',
+    postfix: ''
+  },
 
-	initialize: function (options) {
-		L.Util.setOptions(this, options);
+  initialize: function (options) {
+    L.Util.setOptions(this, options);
 
-		this._attributions = {};
-	},
+    this._attributions = {};
+  },
 
-	onAdd: function (map) {
-		this._container = L.DomUtil.create('div', 'leaflet-control-attribution');
-		L.DomEvent.disableClickPropagation(this._container);
+  onAdd: function (map) {
+    this._container = L.DomUtil.create('div', 'leaflet-control-attribution');
+    L.DomEvent.disableClickPropagation(this._container);
 
-		map
-			.on('layeradd', this._onLayerAdd, this)
-			.on('layerremove', this._onLayerRemove, this);
+    map
+      .on('layeradd', this._onLayerAdd, this)
+      .on('layerremove', this._onLayerRemove, this);
 
-		this._update();
+    this._update();
 
-		return this._container;
-	},
+    return this._container;
+  },
 
-	onRemove: function (map) {
-		map
-			.off('layeradd', this._onLayerAdd)
-			.off('layerremove', this._onLayerRemove);
+  onRemove: function (map) {
+    map
+      .off('layeradd', this._onLayerAdd)
+      .off('layerremove', this._onLayerRemove);
 
-	},
+  },
 
-	setPrefix: function (prefix) {
-		this.options.prefix = prefix;
-		this._update();
-		return this;
-	},
-	
-	setPostfix: function (postfix) {
-		this.options.postfix = postfix;
-		this._update();
-		return this;
-	},	
+  setPrefix: function (prefix) {
+    this.options.prefix = prefix;
+    this._update();
+    return this;
+  },
 
-	addAttribution: function (text) {
-		if (!text) { return; }
+  setPostfix: function (postfix) {
+    this.options.postfix = postfix;
+    this._update();
+    return this;
+  },
 
-		if (!this._attributions[text]) {
-			this._attributions[text] = 0;
-		}
-		this._attributions[text]++;
+  addAttribution: function (text) {
+    if (!text) { return; }
 
-		this._update();
+    if (!this._attributions[text]) {
+      this._attributions[text] = 0;
+    }
+    this._attributions[text]++;
 
-		return this;
-	},
+    this._update();
 
-	removeAttribution: function (text) {
-		if (!text) { return; }
+    return this;
+  },
 
-		this._attributions[text]--;
-		this._update();
+  removeAttribution: function (text) {
+    if (!text) { return; }
 
-		return this;
-	},
+    this._attributions[text]--;
+    this._update();
 
-	_update: function () {
-		if (!this._map) { return; }
+    return this;
+  },
 
-		var attribs = [];
+  _update: function () {
+    if (!this._map) { return; }
 
-		for (var i in this._attributions) {
-			if (this._attributions.hasOwnProperty(i) && this._attributions[i]) {
-				attribs.push(i);
-			}
-		}
+    var attribs = [];
 
-		var prefixAndAttribs = [];
+    for (var i in this._attributions) {
+      if (this._attributions.hasOwnProperty(i) && this._attributions[i]) {
+        attribs.push(i);
+      }
+    }
 
-		if (this.options.prefix) {
-			prefixAndAttribs.push(this.options.prefix);
-		}
-		if (attribs.length) {
-			prefixAndAttribs.push(attribs.join(', '));
-		}
-		if( this.options.postfix ) {
-			prefixAndAttribs.push( this.options.postfix );
-		}
-		
-		this._container.innerHTML = prefixAndAttribs.join(' &#8212; ');
-	},
+    var prefixAndAttribs = [];
 
-	_onLayerAdd: function (e) {
-		if (e.layer.getAttribution) {
-			this.addAttribution(e.layer.getAttribution());
-		}
-	},
+    if (this.options.prefix) {
+      prefixAndAttribs.push(this.options.prefix);
+    }
+    if (attribs.length) {
+      prefixAndAttribs.push(attribs.join(', '));
+    }
+    if( this.options.postfix ) {
+      prefixAndAttribs.push( this.options.postfix );
+    }
 
-	_onLayerRemove: function (e) {
-		if (e.layer.getAttribution) {
-			this.removeAttribution(e.layer.getAttribution());
-		}
-	}
+    this._container.innerHTML = prefixAndAttribs.join(' &#8212; ');
+  },
+
+  _onLayerAdd: function (e) {
+    if (e.layer.getAttribution) {
+      this.addAttribution(e.layer.getAttribution());
+    }
+  },
+
+  _onLayerRemove: function (e) {
+    if (e.layer.getAttribution) {
+      this.removeAttribution(e.layer.getAttribution());
+    }
+  }
 });

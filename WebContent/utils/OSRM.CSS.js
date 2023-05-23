@@ -19,21 +19,21 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // [edit css styles]
 
 OSRM.CSS = {
-	getStylesheet: function(filename, the_document) {
-		the_document = the_document || document;
-		var stylesheets = the_document.styleSheets;
-		for(var i=0, size=stylesheets.length; i<size; i++) {
-			if( stylesheets[i].href.indexOf(filename) >= 0)
-				return stylesheets[i];
-		}
-		return null;
-	},
-	
-	insert: function(stylesheet, selector, rule) {
-		if( stylesheet.addRule ){
-			stylesheet.addRule(selector, rule);
-		} else if( stylesheet.insertRule ){
+  getStylesheet: function(filename, the_document) {
+    the_document = the_document || document;
+    var stylesheets = the_document.styleSheets;
+    for(var i=0, size=stylesheets.length; i<size; i++) {
+      if( stylesheets[i].href.indexOf(filename) >= 0)
+        return stylesheets[i];
+    }
+    return null;
+  },
+
+  insert: function(stylesheet, selector, rule) {
+    if( stylesheet.addRule ){
+      stylesheet.addRule(selector, rule);
+    } else if( stylesheet.insertRule ){
             stylesheet.insertRule(selector + ' { ' + rule + ' }', stylesheet.cssRules.length);
-		}
-	}		
+    }
+  }
 };

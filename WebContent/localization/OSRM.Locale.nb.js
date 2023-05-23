@@ -106,31 +106,31 @@ OSRM.Localization["nb"] = {
 "DIRECTION_11-x":"Kjør inn i rundkjøringen og ta av på en av de for mange avkjøringene[ inn på <b>%s</b>]",
 "DIRECTION_15":"Du er fremme",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Planlagt vedlikehold",
-"NOTIFICATION_MAINTENANCE_BODY":	"OSRMs nettsted er nede for planlagt vedlikehold. " +
-									"Vennligst vær tålmodig mens de nødvendige oppdateringene gjøres. " +
-									"Siden vil snart være tilgjengelig igjen." +
-									"<br/><br/>" +
-									"I mellomtiden vil du kanskje gå ut og kartlegge et nabolag i nærheten..." +
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Visste du at du kan endre språk?",
-"NOTIFICATION_LOCALIZATION_BODY":	"Du kan velge favorittspråket ditt i nedtrekksmenyen i øvre venstre hjørne. " +
-									"<br/><br/>" +
-									"Ikke fortvil hvis du ikke finner ditt foretrukne språk, " +
-									"hvis du vil kan du hjelpe til med å tilby flere oversettelser! " +
-									"Se <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>her</a> for mer informasjon.",
-"NOTIFICATION_CLICKING_HEADER":		"Visste du at du kan trykke i kartet for å sette rutemarkører?", //fixme better word for marker?
-"NOTIFICATION_CLICKING_BODY":		"Du kan trykke i kartet med venstre museknapp for å sette startmarkør (grønn) eller, hvis startmarkøren allerede fins, målmarkør (rød). " +
-									"Adressen til stedet du har markert vises i boksene til venstre. " +
-									"<br/><br/>" +
-									"Du fjerner markøren ved å trykke på den igjen.",
-"NOTIFICATION_DRAGGING_HEADER":		"Visste du at du kan dra rutemarkørene i kartet?",
-"NOTIFICATION_DRAGGING_BODY":		"Du kan dra markørene ved å trykke og holde nede venstre museknapp. " +
-									"Da kan du flytte markøren rundt på kartet, og ruten din blir kontinuerlig oppdatert. " +
-									"<br/><br/>" +
-									"Du kan til og med lage via-punkter ved å dra dem ut fra hovedruten! ",
+"NOTIFICATION_MAINTENANCE_HEADER":  "Planlagt vedlikehold",
+"NOTIFICATION_MAINTENANCE_BODY":  "OSRMs nettsted er nede for planlagt vedlikehold. " +
+                  "Vennligst vær tålmodig mens de nødvendige oppdateringene gjøres. " +
+                  "Siden vil snart være tilgjengelig igjen." +
+                  "<br/><br/>" +
+                  "I mellomtiden vil du kanskje gå ut og kartlegge et nabolag i nærheten..." +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Visste du at du kan endre språk?",
+"NOTIFICATION_LOCALIZATION_BODY":  "Du kan velge favorittspråket ditt i nedtrekksmenyen i øvre venstre hjørne. " +
+                  "<br/><br/>" +
+                  "Ikke fortvil hvis du ikke finner ditt foretrukne språk, " +
+                  "hvis du vil kan du hjelpe til med å tilby flere oversettelser! " +
+                  "Se <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>her</a> for mer informasjon.",
+"NOTIFICATION_CLICKING_HEADER":    "Visste du at du kan trykke i kartet for å sette rutemarkører?", //fixme better word for marker?
+"NOTIFICATION_CLICKING_BODY":    "Du kan trykke i kartet med venstre museknapp for å sette startmarkør (grønn) eller, hvis startmarkøren allerede fins, målmarkør (rød). " +
+                  "Adressen til stedet du har markert vises i boksene til venstre. " +
+                  "<br/><br/>" +
+                  "Du fjerner markøren ved å trykke på den igjen.",
+"NOTIFICATION_DRAGGING_HEADER":    "Visste du at du kan dra rutemarkørene i kartet?",
+"NOTIFICATION_DRAGGING_BODY":    "Du kan dra markørene ved å trykke og holde nede venstre museknapp. " +
+                  "Da kan du flytte markøren rundt på kartet, og ruten din blir kontinuerlig oppdatert. " +
+                  "<br/><br/>" +
+                  "Du kan til og med lage via-punkter ved å dra dem ut fra hovedruten! ",
 };
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("nb", true);
+  OSRM.Localization.setLanguage("nb", true);

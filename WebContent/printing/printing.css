@@ -22,7 +22,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 /* page setup */
 body
 {
-	margin: 8px;
+  margin: 8px;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -30,18 +30,18 @@ body
 /* changes/additions to leaflet styles */
 .via-counter
 {
-	position:absolute;
-	top:-3px;
-	right:-6px;
-	width:16px;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	background-color:#FFFFFF;
-	text-align:center;
-	vertical-align:middle;	
-	font-size:9px;
-	display:none;
+  position:absolute;
+  top:-3px;
+  right:-6px;
+  width:16px;
+  border-radius:5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  background-color:#FFFFFF;
+  text-align:center;
+  vertical-align:middle;
+  font-size:9px;
+  display:none;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -49,34 +49,34 @@ body
 /* header area */
 #printing-header
 {
-	left:0px;
-	right:0px;
-	top:0px;
-	height:20px;
+  left:0px;
+  right:0px;
+  top:0px;
+  height:20px;
 }
 .top-right-button
 {
-	float:right;
-	vertical-align:top;
+  float:right;
+  vertical-align:top;
 }
 
 
 /* content area */
 div.label
 {
-	font-weight:bold;
-	margin-bottom:10px;
+  font-weight:bold;
+  margin-bottom:10px;
 }
 .box
 {
-	width:500px;
-	margin:5px;
+  width:500px;
+  margin:5px;
 }
 #overview-map
 {
-	width:500px;
-	height:500px;
-	margin:5px;
+  width:500px;
+  height:500px;
+  margin:5px;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -84,67 +84,67 @@ div.label
 /* description content */
 .description
 {
-	border-spacing:0px;
-	width:100%;
+  border-spacing:0px;
+  width:100%;
 }
 
 /* styles for description header */
 .description-header
 {
-	display:table-header-group;
+  display:table-header-group;
 }
 .description-header-label
 {
-	padding:0px 5px 0px 0px;
+  padding:0px 5px 0px 0px;
 }
 .description-header-content
 {
-	font-weight:bold;
+  font-weight:bold;
 }
 
 
 /* styles for description body */
 .description-body
 {
-	display:table-row-group;
+  display:table-row-group;
 }
 .description-body-odd
 {
-	background-color: #FFFDE3;
+  background-color: #FFFDE3;
 }
 .description-body-even
 {
-	background-color: #FFF9BB;
+  background-color: #FFF9BB;
 }
 .description-body-items
 {
-	text-align:left;
-	vertical-align: middle;
-	width:100%;
-	padding:1px;
+  text-align:left;
+  vertical-align: middle;
+  width:100%;
+  padding:1px;
 }
 .description-body-directions
 {
-	text-align:left;
-	vertical-align: middle;
-	padding:1px 5px 1px 5px;
+  text-align:left;
+  vertical-align: middle;
+  padding:1px 5px 1px 5px;
 }
 .description-body-direction
 {
-	height:36px;
-	width:36px;
+  height:36px;
+  width:36px;
 }
 .description-body-distance
 {
-	text-align:right;
-	vertical-align: middle;
-	padding:1px 1px 1px 5px;
+  text-align:right;
+  vertical-align: middle;
+  padding:1px 1px 1px 5px;
 }
 @media print {
 .description-body-even > td,
 .description-body-odd > td
 {
-	border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 }
 
@@ -153,16 +153,16 @@ div.label
 /* iconic buttons */
 .iconic-button
 {
-	cursor:pointer;
-	width:16px;
-	height:16px;
-	background-repeat:no-repeat;
-	background-position:center;
+  cursor:pointer;
+  width:16px;
+  height:16px;
+  background-repeat:no-repeat;
+  background-position:center;
 }
 
 #gui-printer-inactive
 {
-	cursor:default;
+  cursor:default;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -170,22 +170,22 @@ div.label
 /* utility styles */
 .quad
 {
-	min-width:10px;
-	min-height:10px;
+  min-width:10px;
+  min-height:10px;
 }
 @media print {
 .pagebreak
 {
-	page-break-after:always;
+  page-break-after:always;
 }
 .noprint
 {
-	display:none;
+  display:none;
 }
 }
 .nowrap
 {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -193,34 +193,34 @@ div.label
 /* table */
 .full
 {
-	display:table;
-	width:100%;
+  display:table;
+  width:100%;
 }
 .row
 {
-	display:table-row;
+  display:table-row;
 }
 .left
 {
-	display:table-cell;
-	text-align:left;
-	vertical-align:top;
+  display:table-cell;
+  text-align:left;
+  vertical-align:top;
 }
 .right
 {
-	display:table-cell;
-	text-align:right;
-	vertical-align:top;
+  display:table-cell;
+  text-align:right;
+  vertical-align:top;
 }
 .center
 {
-	display:table-cell;
-	text-align:center;
-	vertical-align:top;
+  display:table-cell;
+  text-align:center;
+  vertical-align:top;
 }
 .stretch
 {
-	width:100%;	
+  width:100%;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -228,46 +228,46 @@ div.label
 /* fonts */
 @media print {
 .base-font {
-	font-family: Times New Roman, Times, serif;
-	font-size: 16px;
-	font-weight: normal;
+  font-family: Times New Roman, Times, serif;
+  font-size: 16px;
+  font-weight: normal;
 }
 .big-font {
-	font-family: Times New Roman, Times, serif;
-	font-size: 18px;
-	font-weight: bold;	
+  font-family: Times New Roman, Times, serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 .medium-font {
-	font-family: Times New Roman, Times, serif;
-	font-size: 14px;
-	font-weight: normal;	
+  font-family: Times New Roman, Times, serif;
+  font-size: 14px;
+  font-weight: normal;
 }
 .small-font {
-	font-family: Times New Roman, Times, serif;
-	font-size: 12px;
-	font-weight: normal;	
+  font-family: Times New Roman, Times, serif;
+  font-size: 12px;
+  font-weight: normal;
 }
 }
 
 @media screen {
 .base-font {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	font-weight: normal;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
 }
 .big-font {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 15px;
-	font-weight: bold;	
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
 }
 .medium-font {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	font-weight: normal;	
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
 }
 .small-font {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 9px;
-	font-weight: normal;	
-}	
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: normal;
+}
 }

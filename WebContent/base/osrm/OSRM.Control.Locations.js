@@ -18,46 +18,46 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // locations control
 // [navigation buttons for important locations - zoom on route, zoom on user]
 OSRM.Control.Locations = L.Control.extend({
-	options: {
-		position: 'topright'
-	},
-	
-	onAdd: function (map) {
-		// create wrapper
-		var container = L.DomUtil.create('div', 'box-wrapper gui-control-wrapper');
-		L.DomEvent.disableClickPropagation(container);
-		
-		// create buttons
-		this._userButton = this._createButton('gui-locations-user', container, OSRM.GUI.zoomOnUser, map, !!navigator.geolocation );
-		this._routeButton = this._createButton('gui-locations-route', container, OSRM.GUI.zoomOnRoute, map, false);
+  options: {
+    position: 'topright'
+  },
 
-		this._container = container;		
-		return container;
-	},
+  onAdd: function (map) {
+    // create wrapper
+    var container = L.DomUtil.create('div', 'box-wrapper gui-control-wrapper');
+    L.DomEvent.disableClickPropagation(container);
 
-	_createButton: function (id, container, fn, context, isActive) {
-		var inactive = (isActive == false) ? "-inactive" : "";
-		var classNames = "box-content" + " " + "gui-control"+inactive + " " + id+inactive;
-		var link = L.DomUtil.create('a', classNames, container);
-		link.title = id;
+    // create buttons
+    this._userButton = this._createButton('gui-locations-user', container, OSRM.GUI.zoomOnUser, map, !!navigator.geolocation );
+    this._routeButton = this._createButton('gui-locations-route', container, OSRM.GUI.zoomOnRoute, map, false);
 
-		L.DomEvent
-			.on(link, 'click', L.DomEvent.stopPropagation)
-			.on(link, 'click', L.DomEvent.preventDefault)
-			.on(link, 'click', fn, context)
-			.on(link, 'dblclick', L.DomEvent.stopPropagation);
+    this._container = container;
+    return container;
+  },
 
-		return link;
-	},
-	
-	activateRoute: function() {
-		this._routeButton.className = "box-content gui-control gui-locations-route";		
-	},
-	deactivateRoute: function() {
-		this._routeButton.className = "box-content gui-control-inactive gui-locations-route-inactive";		
-	},
-	setTooltips: function( userButton, routeButton) {
-		this._userButton.title = userButton;
-		this._routeButton.title = routeButton;
-	}
+  _createButton: function (id, container, fn, context, isActive) {
+    var inactive = (isActive == false) ? "-inactive" : "";
+    var classNames = "box-content" + " " + "gui-control"+inactive + " " + id+inactive;
+    var link = L.DomUtil.create('a', classNames, container);
+    link.title = id;
+
+    L.DomEvent
+      .on(link, 'click', L.DomEvent.stopPropagation)
+      .on(link, 'click', L.DomEvent.preventDefault)
+      .on(link, 'click', fn, context)
+      .on(link, 'dblclick', L.DomEvent.stopPropagation);
+
+    return link;
+  },
+
+  activateRoute: function() {
+    this._routeButton.className = "box-content gui-control gui-locations-route";
+  },
+  deactivateRoute: function() {
+    this._routeButton.className = "box-content gui-control-inactive gui-locations-route-inactive";
+  },
+  setTooltips: function( userButton, routeButton) {
+    this._userButton.title = userButton;
+    this._routeButton.title = routeButton;
+  }
 });

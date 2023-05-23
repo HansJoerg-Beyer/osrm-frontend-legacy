@@ -106,32 +106,32 @@ OSRM.Localization["tr"] = {
 "DIRECTION_11-x":"Kavşağa girin ve birçok çıkışın birinden çıkın[ onto <b>%s</b>]",
 "DIRECTION_15":"Hedefinize ulaştınız",
 // notifications
-"NOTIFICATION_MAINTENANCE_HEADER":	"Programlı Bakım",
-"NOTIFICATION_MAINTENANCE_BODY":	"OSRM Web sayfası planlı bakımla yazılmıştır. " +
-									"Lütfen güncellenmeler yapılırken sabırlı olun. " +
-									"Site kısa bir süre sonra çevrimiçi olacaktır." +
-									"<br/><br/>" +
-									"Aynı zamanda dışarıya çıkıp komşunuzu haritalamayı isteyebilirsiniz..." +
-									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Biliyor muydunuz? Dil görünümünü değiştirebilirsiniz.",
-"NOTIFICATION_LOCALIZATION_BODY":	"Favori dilinizi seçmek için üst sol köşedeki aşağı açılna menüye tıklayabilirsiniz. " +
-									"<br/><br/>" +
-									"İstediğiniz dili bulamazsanız umutsuzluğa düşmeyin. " +
-									"Eğer isterseniz, fazladan çeviriler elde etmek için yardım edebilirsiniz! " +
-									"Ziyaret edin <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>here</a> daha fazla bilgi için.",
-"NOTIFICATION_CLICKING_HEADER":		"Biliyor muydunuz? Rota işaretleyicilerini ayarlamak için haritaya tıklayabilirsiniz.",
-"NOTIFICATION_CLICKING_BODY":		"İşaretleyici kaynağını (yeşil) yada hedef işaretleyici (kırmızı)ayarlamak için farenin sol tarafıyla haritanın üzerine tıklayabilirsiniz. " +
-									"Eğer kaynak işaretleyici zaten varsa. " +
-									"Seçilen bölgenin adresi sola doğru kutularda gözükecek. " +
-									"<br/><br/>" +
-									"Farenin sol tarafına tıklayarak işaretleyiciyi silebilirsiniz.",
-"NOTIFICATION_DRAGGING_HEADER":		"Biliyor muydunuz? Rota işaretleyicisini harita üzerinde sürükleyebilirsiniz.",
-"NOTIFICATION_DRAGGING_BODY":		"İşaretleyiciyi farenin sol tarafına tıklayarak veya basılı tutarak sürükleyebilirsiniz. " +
-									"Sonra işaretleyiciyi haritanın çevresinde hareket ettirebilirsiniz ve rota kendini otomatik olarak yeniler. " +
-									"<br/><br/>" +
-									"Asıl rotalarına sürükleyerek orta dereceli bir işaretleyici oluşturabilirsiniz ! "
+"NOTIFICATION_MAINTENANCE_HEADER":  "Programlı Bakım",
+"NOTIFICATION_MAINTENANCE_BODY":  "OSRM Web sayfası planlı bakımla yazılmıştır. " +
+                  "Lütfen güncellenmeler yapılırken sabırlı olun. " +
+                  "Site kısa bir süre sonra çevrimiçi olacaktır." +
+                  "<br/><br/>" +
+                  "Aynı zamanda dışarıya çıkıp komşunuzu haritalamayı isteyebilirsiniz..." +
+                  "<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":  "Biliyor muydunuz? Dil görünümünü değiştirebilirsiniz.",
+"NOTIFICATION_LOCALIZATION_BODY":  "Favori dilinizi seçmek için üst sol köşedeki aşağı açılna menüye tıklayabilirsiniz. " +
+                  "<br/><br/>" +
+                  "İstediğiniz dili bulamazsanız umutsuzluğa düşmeyin. " +
+                  "Eğer isterseniz, fazladan çeviriler elde etmek için yardım edebilirsiniz! " +
+                  "Ziyaret edin <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>here</a> daha fazla bilgi için.",
+"NOTIFICATION_CLICKING_HEADER":    "Biliyor muydunuz? Rota işaretleyicilerini ayarlamak için haritaya tıklayabilirsiniz.",
+"NOTIFICATION_CLICKING_BODY":    "İşaretleyici kaynağını (yeşil) yada hedef işaretleyici (kırmızı)ayarlamak için farenin sol tarafıyla haritanın üzerine tıklayabilirsiniz. " +
+                  "Eğer kaynak işaretleyici zaten varsa. " +
+                  "Seçilen bölgenin adresi sola doğru kutularda gözükecek. " +
+                  "<br/><br/>" +
+                  "Farenin sol tarafına tıklayarak işaretleyiciyi silebilirsiniz.",
+"NOTIFICATION_DRAGGING_HEADER":    "Biliyor muydunuz? Rota işaretleyicisini harita üzerinde sürükleyebilirsiniz.",
+"NOTIFICATION_DRAGGING_BODY":    "İşaretleyiciyi farenin sol tarafına tıklayarak veya basılı tutarak sürükleyebilirsiniz. " +
+                  "Sonra işaretleyiciyi haritanın çevresinde hareket ettirebilirsiniz ve rota kendini otomatik olarak yeniler. " +
+                  "<br/><br/>" +
+                  "Asıl rotalarına sürükleyerek orta dereceli bir işaretleyici oluşturabilirsiniz ! "
 };
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING==true )
-	OSRM.Localization.setLanguage("tr", true);
+  OSRM.Localization.setLanguage("tr", true);
