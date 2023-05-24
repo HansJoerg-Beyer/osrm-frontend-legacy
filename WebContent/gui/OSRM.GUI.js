@@ -21,24 +21,23 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 OSRM.GUI = {
 
-// initialization functions of all GUI parts
-init_functions: [],
+  // initialization functions of all GUI parts
+  init_functions: [],
 
-// init GUI
-init: function() {
-  for(var i=0, size=OSRM.GUI.init_functions.length; i<size; i++) {
-    OSRM.GUI.init_functions[i]();
+  // init GUI
+  init: function() {
+    for(var i=0, size=OSRM.GUI.init_functions.length; i<size; i++) {
+      OSRM.GUI.init_functions[i]();
+    }
+  },
+
+  //extend GUI class and add init functions to the array
+  extend: function( properties ) {
+    for( property in properties ) {
+      if( property == 'init' )
+        OSRM.GUI.init_functions.push( properties[property] );
+      else
+        OSRM.GUI[property] = properties[property];
+    }
   }
-},
-
-//extend GUI class and add init functions to the array
-extend: function( properties ) {
-  for( property in properties ) {
-    if( property == 'init' )
-      OSRM.GUI.init_functions.push( properties[property] );
-    else
-      OSRM.GUI[property] = properties[property];
-  }
-}
-
 };

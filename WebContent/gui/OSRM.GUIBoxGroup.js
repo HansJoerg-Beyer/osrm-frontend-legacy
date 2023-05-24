@@ -27,27 +27,28 @@ OSRM.GUIBoxGroup = function() {
 };
 
 OSRM.extend( OSRM.GUIBoxGroup, {
-add: function( handle ) {
-  this._handles.push( handle );
-  handle.$addToGroup(this);
-},
-select: function( handle ) {
-  for(var i=0; i< this._handles.length; i++) {
-    if( this._handles[i] != handle )
-      this._handles[i].$hideBox();
-    else
-      this._handles[i].$showBox();
-  }
-},
+  add: function( handle ) {
+    this._handles.push( handle );
+    handle.$addToGroup(this);
+  },
 
-$hide: function() {
-  for(var i=0; i< this._handles.length; i++) {
-    this._handles[i].$hide();
+  select: function( handle ) {
+    for(var i=0; i< this._handles.length; i++) {
+      if( this._handles[i] != handle )
+        this._handles[i].$hideBox();
+      else
+        this._handles[i].$showBox();
+    }
+  },
+
+  $hide: function() {
+    for(var i=0; i< this._handles.length; i++) {
+      this._handles[i].$hide();
+    }
+  },
+  $show: function() {
+    for(var i=0; i< this._handles.length; i++) {
+      this._handles[i].$show();
+    }
   }
-},
-$show: function() {
-  for(var i=0; i< this._handles.length; i++) {
-    this._handles[i].$show();
-  }
-}
 });

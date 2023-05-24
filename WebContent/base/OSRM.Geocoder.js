@@ -232,7 +232,6 @@ updateLocation: function(marker_id) {
   }
 },
 
-
 // update address in input boxes
 updateAddress: function(marker_id, do_fallback_to_lat_lng) {
   // build request for reverse geocoder
@@ -260,7 +259,6 @@ updateAddress: function(marker_id, do_fallback_to_lat_lng) {
   var call = OSRM.DEFAULTS.HOST_REVERSE_GEOCODER_URL + "?format=json&json_callback=%jsonp" + "&accept-language="+OSRM.Localization.current_language + "&lat=" + lat.toFixed(pr) + "&lon=" + lng.toFixed(pr);
   OSRM.JSONP.call( call, OSRM.Geocoder._showReverseResults, OSRM.Geocoder._showReverseResults_Timeout, OSRM.DEFAULTS.JSONP_TIMEOUT, "reverse_geocoder_"+marker_id, {marker_id:marker_id, do_fallback: do_fallback_to_lat_lng} );
 },
-
 
 // processing JSONP response of reverse geocoder
 _showReverseResults: function(response, parameters) {
@@ -309,13 +307,13 @@ _showReverseResults: function(response, parameters) {
   else if(parameters.marker_id == OSRM.C.TARGET_LABEL && OSRM.G.markers.hasTarget() )
     document.getElementById("gui-input-target").value = address;
 },
+
 _showReverseResults_Timeout: function(response, parameters) {
   if(!parameters.do_fallback)
     return;
 
   OSRM.Geocoder.updateLocation(parameters.marker_id);
 },
-
 
 // process geocoder response for initialization queries during URL parameter parsing
 _showInitResults: function(response, parameters) {
@@ -343,6 +341,7 @@ _showInitResults: function(response, parameters) {
     }
   }
 },
+
 _showInitResults_Destinations: function() {
   var data = OSRM.G.initial_positions;
 
@@ -362,6 +361,7 @@ _showInitResults_Destinations: function() {
   OSRM.G.initial_position_override = true;
   return;
 },
+
 _showInitResults_Locations: function() {
   var data = OSRM.G.initial_positions;
 

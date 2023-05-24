@@ -21,7 +21,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 OSRM.HistoryRoute = function() {
   // style and count of history routes
-  this._history_styles = [{color:'#FFFFFF', opacity:0.5, weight:5, dashArray:""},
+  this._history_styles = [{color:'#FFFFFF', opacity:0.50, weight:5, dashArray:""},
                           {color:'#0000DD', opacity:0.45, weight:5, dashArray:""},
                           {color:'#0000BB', opacity:0.40, weight:5, dashArray:""},
                           {color:'#000099', opacity:0.35, weight:5, dashArray:""},
@@ -47,6 +47,7 @@ OSRM.HistoryRoute = function() {
   this._initiate_redrawHistory = OSRM.bind(this, this._getRoute_RedrawHistory);
   this._callback_redrawHistory = OSRM.bind(this, this._showRoute_RedrawHistory);
 };
+
 OSRM.extend( OSRM.HistoryRoute,{
   // switch history routes on/off
   activate: function() {
@@ -169,6 +170,7 @@ OSRM.extend( OSRM.HistoryRoute,{
         OSRM.JSONP.call(this._buildCall(i)+'&instructions=false', this._callback_redrawHistory, OSRM.JSONP.empty, OSRM.DEFAULTS.JSONP_TIMEOUT, 'history'+i, i);
       }
   },
+
   _buildCall: function(history_id) {
     var source = OSRM.G.active_routing_server_url;
     source += '?z=' + OSRM.G.map.getZoom() + '&output=json&jsonp=%jsonp';

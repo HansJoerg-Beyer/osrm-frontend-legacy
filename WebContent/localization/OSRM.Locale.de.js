@@ -77,6 +77,11 @@ OSRM.Localization["de"] = {
 // routing engines
 "ENGINE_0": "Auto (schnellste)",
 "ENGINE_1": "Fahrrad (schnellste)",
+"ENGINE_2": "Fußgaenger",
+"ENGINE_3": "Rollator",
+"ENGINE_4": "Rollstuhl",
+"ENGINE_5": "Sehbehindert",
+"ENGINE_6": "Blind",
 // tile server names
 // (only required if names are different to OSRM.config)
 //"TILE_SERVER_0": "osm.org",

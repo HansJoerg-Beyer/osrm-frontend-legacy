@@ -24,8 +24,7 @@ OSRM.SimpleRoute = function (label, style) {
   this.label = (label ? label : "route");
   this.route = new L.Polyline( [], style );
   this.shown = false;
-
-   this.route.on('click', this.onClick);
+  this.route.on('click', this.onClick);
 };
 OSRM.extend( OSRM.SimpleRoute,{
 show: function() {
