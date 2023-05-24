@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // [modified to support postfix (reason: add static OSM data attribution to dynamic Bing imagery attributions) ]
 
 OSRM.Control.Attribution = L.Control.extend({
+
   options: {
     position: 'bottomright',
     prefix: 'Powered by <a href="http://leaflet.cloudmade.com">Leaflet</a>',
@@ -35,20 +36,16 @@ OSRM.Control.Attribution = L.Control.extend({
 
   initialize: function (options) {
     L.Util.setOptions(this, options);
-
     this._attributions = {};
   },
 
   onAdd: function (map) {
     this._container = L.DomUtil.create('div', 'leaflet-control-attribution');
     L.DomEvent.disableClickPropagation(this._container);
-
     map
       .on('layeradd', this._onLayerAdd, this)
       .on('layerremove', this._onLayerRemove, this);
-
     this._update();
-
     return this._container;
   },
 
@@ -56,7 +53,6 @@ OSRM.Control.Attribution = L.Control.extend({
     map
       .off('layeradd', this._onLayerAdd)
       .off('layerremove', this._onLayerRemove);
-
   },
 
   setPrefix: function (prefix) {
@@ -73,39 +69,30 @@ OSRM.Control.Attribution = L.Control.extend({
 
   addAttribution: function (text) {
     if (!text) { return; }
-
     if (!this._attributions[text]) {
       this._attributions[text] = 0;
     }
     this._attributions[text]++;
-
     this._update();
-
     return this;
   },
 
   removeAttribution: function (text) {
     if (!text) { return; }
-
     this._attributions[text]--;
     this._update();
-
     return this;
   },
 
   _update: function () {
     if (!this._map) { return; }
-
     var attribs = [];
-
     for (var i in this._attributions) {
       if (this._attributions.hasOwnProperty(i) && this._attributions[i]) {
         attribs.push(i);
       }
     }
-
     var prefixAndAttribs = [];
-
     if (this.options.prefix) {
       prefixAndAttribs.push(this.options.prefix);
     }
@@ -115,7 +102,6 @@ OSRM.Control.Attribution = L.Control.extend({
     if( this.options.postfix ) {
       prefixAndAttribs.push( this.options.postfix );
     }
-
     this._container.innerHTML = prefixAndAttribs.join(' &#8212; ');
   },
 
@@ -130,4 +116,5 @@ OSRM.Control.Attribution = L.Control.extend({
       this.removeAttribution(e.layer.getAttribution());
     }
   }
+  
 });

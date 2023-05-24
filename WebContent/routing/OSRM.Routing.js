@@ -64,11 +64,12 @@ OSRM.Routing = {
   },
 
   showRoute: function(response, parameters) {
+    console.log('HJB: showRoute');
     if(!response)
       return;
     if( parameters.keepAlternative != true )
       OSRM.G.active_alternative = 0;
-
+    console.log(response);
     OSRM.G.response = response;  // needed for printing & history routes!
     OSRM.Routing._snapRoute();
     if(response.status == 207) {
@@ -116,6 +117,7 @@ OSRM.Routing = {
     if( parameters.keepAlternative == false )
       OSRM.G.active_alternative = 0;
 
+    console.log(response);
     OSRM.G.response = response;  // not needed, even harmful as important information is not stored! ==> really ????
     if(response.status != 207) {
       if((typeof response.found_alternative == "undefined") || response.found_alternative) {
@@ -140,7 +142,9 @@ OSRM.Routing = {
     OSRM.JSONP.clear('dragging');
     OSRM.JSONP.clear('redraw');
     OSRM.JSONP.clear('route');
-    OSRM.JSONP.call(OSRM.Routing._buildCall()+'?steps=true', OSRM.Routing.showRoute, OSRM.Routing.timeoutRoute, OSRM.DEFAULTS.JSONP_TIMEOUT, 'route', parameters);
+    console.log('HJB: getRoute 1');
+    OSRM.JSONP.call(OSRM.Routing._buildCall()+'?steps=true', OSRM.Routing.showRoute, OSRM.Routing.timeoutRoute, OSRM.DEFAULTS.JSONP_TIMEOUT, 'showRoute', parameters);
+    console.log('HJB: getRoute 2');
   },
 
   getRoute_Reversed: function() {
@@ -178,7 +182,7 @@ OSRM.Routing = {
     var markers = OSRM.G.markers.route;
     var pr = OSRM.C.PRECISION;
     for(var i=0, size=markers.length; i<size; i++) {
-      source += markers[i].getLng().toFixed(pr) + ','; 
+      source += markers[i].getLng().toFixed(pr) + ',';
       source += markers[i].getLat().toFixed(pr) + ';';
     }
     source = source.substr(0, source.length - 1);

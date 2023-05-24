@@ -26,46 +26,57 @@ OSRM.SimpleRoute = function (label, style) {
   this.shown = false;
   this.route.on('click', this.onClick);
 };
-OSRM.extend( OSRM.SimpleRoute,{
-show: function() {
-  OSRM.G.map.addLayer(this.route);
-  this.shown = true;
-},
-hide: function() {
-  OSRM.G.map.removeLayer(this.route);
-  this.shown = false;
-},
-isShown: function() {
-  return this.shown;
-},
-getPoints: function() {
-  return this.route._originalPoints;
-},
-getPositions: function() {
-  return this.route.getLatLngs();
-},
-setPositions: function(positions) {
-  this.route.setLatLngs( positions );
-},
-setStyle: function(style) {
-  this.route.setStyle(style);
-},
-centerView: function() {
-  var bounds = new L.LatLngBounds( this.getPositions() );
-  OSRM.g.map.fitBoundsUI( bounds );
-},
-onClick: function(e) {
-  if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )  // only create markers on simple clicks
-    return;
-  var new_via_index = Math.max( 0, OSRM.Via.findViaIndex( e.latlng ) );
-  var index = OSRM.G.markers.setVia( new_via_index, e.latlng );
-  OSRM.G.markers.route[index].show();
 
-  OSRM.Routing.getRoute();
-},
-toString: function() {
-  return "OSRM.Route("+ this.label + ", " + this.route.getLatLngs().length + " points)";
-}
+OSRM.extend( OSRM.SimpleRoute,{
+
+  show: function() {
+    OSRM.G.map.addLayer(this.route);
+    this.shown = true;
+  },
+
+  hide: function() {
+    OSRM.G.map.removeLayer(this.route);
+    this.shown = false;
+  },
+
+  isShown: function() {
+    return this.shown;
+  },
+
+  getPoints: function() {
+    return this.route._originalPoints;
+  },
+
+  getPositions: function() {
+    return this.route.getLatLngs();
+  },
+
+  setPositions: function(positions) {
+    this.route.setLatLngs( positions );
+  },
+
+  setStyle: function(style) {
+    this.route.setStyle(style);
+  },
+
+  centerView: function() {
+    var bounds = new L.LatLngBounds( this.getPositions() );
+    OSRM.g.map.fitBoundsUI( bounds );
+  },
+
+  onClick: function(e) {
+    if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )  // only create markers on simple clicks
+      return;
+    var new_via_index = Math.max( 0, OSRM.Via.findViaIndex( e.latlng ) );
+    var index = OSRM.G.markers.setVia( new_via_index, e.latlng );
+    OSRM.G.markers.route[index].show();
+    OSRM.Routing.getRoute();
+  },
+
+  toString: function() {
+    return "OSRM.Route("+ this.label + ", " + this.route.getLatLngs().length + " points)";
+  }
+
 });
 
 
@@ -76,30 +87,39 @@ OSRM.MultiRoute = function (label) {
 
   this.shown = false;
 };
+
 OSRM.extend( OSRM.MultiRoute,{
-show: function() {
-  OSRM.G.map.addLayer(this.route);
-  this.shown = true;
-},
-hide: function() {
-  OSRM.G.map.removeLayer(this.route);
-  this.shown = false;
-},
-isShown: function() {
-  return this.shown;
-},
-addRoute: function(positions) {
-  var line = new L.Polyline( positions );
-  line.on('click', function(e) { OSRM.G.route.fire('click',e); });
-  this.route.addLayer( line );
-},
-clearRoutes: function() {
-  this.route.clearLayers();
-},
-setStyle: function(style) {
-  this.route.invoke('setStyle', style);
-},
-toString: function() {
-  return "OSRM.MultiRoute("+ this.label + ")";
-}
+
+  show: function() {
+    OSRM.G.map.addLayer(this.route);
+    this.shown = true;
+  },
+
+  hide: function() {
+    OSRM.G.map.removeLayer(this.route);
+    this.shown = false;
+  },
+
+  isShown: function() {
+    return this.shown;
+  },
+
+  addRoute: function(positions) {
+    var line = new L.Polyline( positions );
+    line.on('click', function(e) { OSRM.G.route.fire('click',e); });
+    this.route.addLayer( line );
+  },
+
+  clearRoutes: function() {
+    this.route.clearLayers();
+  },
+
+  setStyle: function(style) {
+    this.route.invoke('setStyle', style);
+  },
+
+  toString: function() {
+    return "OSRM.MultiRoute("+ this.label + ")";
+  }
+
 });

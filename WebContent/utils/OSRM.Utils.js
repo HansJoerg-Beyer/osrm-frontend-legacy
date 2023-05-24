@@ -21,89 +21,92 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 OSRM.Utils = {
 
-// [human readabilty sizes]
+  // [human readabilty sizes]
 
-// abbreviations cache
-seconds: 's',
-minutes: 'min',
-hours: 'h',
-miles: 'mi',
-feet: 'ft',
-kilometers: 'km',
-meters: 'm',
+  // abbreviations cache
+  seconds: 's',
+  minutes: 'min',
+  hours: 'h',
+  miles: 'mi',
+  feet: 'ft',
+  kilometers: 'km',
+  meters: 'm',
 
-// update abbreviation cache
-updateAbbreviationCache: function() {
-  OSRM.Utils.seconds = OSRM.loc("GUI_S");
-  OSRM.Utils.minutes = OSRM.loc("GUI_MIN");
-  OSRM.Utils.hours = OSRM.loc("GUI_H");
-  OSRM.Utils.miles = OSRM.loc("GUI_MI");
-  OSRM.Utils.feet = OSRM.loc("GUI_FT");
-  OSRM.Utils.kilometers = OSRM.loc("GUI_KM");
-  OSRM.Utils.meters = OSRM.loc("GUI_M");
-},
+  // update abbreviation cache
+  updateAbbreviationCache: function() {
+    OSRM.Utils.seconds = OSRM.loc("GUI_S");
+    OSRM.Utils.minutes = OSRM.loc("GUI_MIN");
+    OSRM.Utils.hours = OSRM.loc("GUI_H");
+    OSRM.Utils.miles = OSRM.loc("GUI_MI");
+    OSRM.Utils.feet = OSRM.loc("GUI_FT");
+    OSRM.Utils.kilometers = OSRM.loc("GUI_KM");
+    OSRM.Utils.meters = OSRM.loc("GUI_M");
+  },
 
-// human readable time
-toHumanTime: function(seconds){
-   seconds = parseInt(seconds);
-   minutes = parseInt(seconds/60);
-   seconds = seconds%60;
-   hours = parseInt(minutes/60);
-   minutes = minutes%60;
-   if(hours==0 && minutes==0){ return seconds + '&nbsp;' + 's'; }
-   else if(hours==0){ return minutes + '&nbsp;' + 'min'; }
-   else if(hours>0){ return hours + '&nbsp;' + 'h' + '&nbsp;' + minutes + '&nbsp;' + 'min';}
-   else {return "N/A";}
-},
-//human readable distance
-toHumanDistanceMeters: function(meters){
-  var distance = parseInt(meters);
+  // human readable time
+  toHumanTime: function(seconds){
+    seconds = parseInt(seconds);
+    minutes = parseInt(seconds/60);
+    seconds = seconds%60;
+    hours = parseInt(minutes/60);
+    minutes = minutes%60;
+    if(hours==0 && minutes==0){ return seconds + '&nbsp;' + 's'; }
+    else if(hours==0){ return minutes + '&nbsp;' + 'min'; }
+    else if(hours>0){ return hours + '&nbsp;' + 'h' + '&nbsp;' + minutes + '&nbsp;' + 'min';}
+    else {return "N/A";}
+  },
 
-  distance = distance / 1000;
-  if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.kilometers; }
-  else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.kilometers; }
-  else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.kilometers; }
-  else if(distance >= 0){ return (distance*1000).toFixed(0)+'&nbsp;' + OSRM.Utils.meters; }
-  else {return "N/A";}
-},
-toHumanDistanceMiles: function(meters){
-  var distance = parseInt(meters);
+  //human readable distance
+  toHumanDistanceMeters: function(meters){
+    var distance = parseInt(meters);
 
-  distance = distance / 1609.344;
-  if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.miles; }
-  else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.miles; }
-  else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.miles; }
-  else if(distance >= 0){ return (distance*5280).toFixed(0)+'&nbsp;' + OSRM.Utils.feet; }
-  else {return "N/A";}
-},
-toHumanDistance: null,
+    distance = distance / 1000;
+    if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.kilometers; }
+    else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.kilometers; }
+    else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.kilometers; }
+    else if(distance >= 0){ return (distance*1000).toFixed(0)+'&nbsp;' + OSRM.Utils.meters; }
+    else {return "N/A";}
+  },
 
+  toHumanDistanceMiles: function(meters){
+    var distance = parseInt(meters);
 
-// [verification routines]
+    distance = distance / 1609.344;
+    if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.miles; }
+    else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.miles; }
+    else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.miles; }
+    else if(distance >= 0){ return (distance*5280).toFixed(0)+'&nbsp;' + OSRM.Utils.feet; }
+    else {return "N/A";}
+  },
 
-// verify angles
-isLatitude: function(value) {
-  if( value >=-90 && value <=90)
-    return true;
-  else
-    return false;
-},
-isLongitude: function(value) {
-  if( value >=-180 && value <=180)
-    return true;
-  else
-    return false;
-},
-isNumber: function(n) {
+  toHumanDistance: null,
+
+  // [verification routines]
+
+  // verify angles
+  isLatitude: function(value) {
+    if( value >=-90 && value <=90)
+      return true;
+    else
+      return false;
+  },
+
+  isLongitude: function(value) {
+    if( value >=-180 && value <=180)
+      return true;
+    else
+      return false;
+  },
+
+  isNumber: function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
-},
+  },
 
+  //[other routines]
 
-//[other routines]
-
-//hashing as in JAVA (thanks to lordvlad @ stackoverflow)
-getHash: function(s) {
-  return s.split("").reduce( function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a;}, 0);
-}
+  //hashing as in JAVA (thanks to lordvlad @ stackoverflow)
+  getHash: function(s) {
+    return s.split("").reduce( function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a;}, 0);
+  }
 
 };

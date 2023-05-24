@@ -18,6 +18,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // zoom control
 // [modified zoom control with ids, prevention of click propagation, show/hide with respect to main OSRM window; added comments to all changes]
 OSRM.Control.Zoom = L.Control.extend({
+
   options: {
     position: 'topleft'
   },
@@ -31,9 +32,7 @@ OSRM.Control.Zoom = L.Control.extend({
     this._zoomInButton  = this._createButton('', 'Zoom in',  zoomName + '-in',  container, this._zoomIn,  this);  // removed html
     this._zoomOutButton = this._createButton('', 'Zoom out', zoomName + '-out', container, this._zoomOut, this);  // removed html
     this._container = container;                            // stored container reference
-
     map.on('zoomend zoomlevelschange', this._updateDisabled, this);
-
     return container;
   },
 
@@ -94,10 +93,12 @@ OSRM.Control.Zoom = L.Control.extend({
     if( this._container )
       this._container.style.visibility="hidden";
   },
+
   hide: function() {
     if( this._container )
       this._container.style.visibility="hidden";
   },
+
   show: function() {
     if( this._container ) {
       this._container.style.top = "5px";
@@ -105,8 +106,10 @@ OSRM.Control.Zoom = L.Control.extend({
       this._container.style.visibility="visible";
     }
   },
+
   setTooltips: function( zoomIn, zoomOut) {
     this._zoomInButton.title = zoomIn;
     this._zoomOutButton.title = zoomOut;
   }
+
 });

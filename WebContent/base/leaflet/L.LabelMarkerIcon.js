@@ -21,6 +21,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 // extended icon class
 L.LabelMarkerIcon = L.Icon.extend({
+
   // altered icon creation (with label)
   _createImg: function (src) {
     var el;
@@ -74,4 +75,5 @@ L.LabelMarkerIcon = L.Icon.extend({
     }
     return el;
   }
+  
 });

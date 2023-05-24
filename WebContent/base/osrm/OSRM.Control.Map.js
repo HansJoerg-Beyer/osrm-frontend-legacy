@@ -18,6 +18,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // OSRM Map control
 // [extension of L.Map with additional view & bounds methods that respect OSRM UI visibility; methods for querying active layers]
 OSRM.Control.Map = L.Map.extend({
+
   _boundsInsideView: function(bounds) {
     var viewBounds = this.getBounds(),
     viewSw = this.project(viewBounds.getSouthWest()),
@@ -39,6 +40,7 @@ OSRM.Control.Map = L.Map.extend({
     }
     return true;
   },
+
   setViewBounds: function(bounds) {
     var zoom = this.getBoundsZoom(bounds);      // maximum zoom level at which the bounds fit onto the map
 
@@ -48,6 +50,7 @@ OSRM.Control.Map = L.Map.extend({
       this.setView(bounds.getCenter(),  this._zoom);
     }
   },
+
   setViewUI: function(position, zoom, no_animation) {
     if( OSRM.G.main_handle.boxVisible() ) {
       var point = this.project( position, zoom);
@@ -56,6 +59,7 @@ OSRM.Control.Map = L.Map.extend({
     }
     this.setView( position, zoom, no_animation);
   },
+
   setViewBoundsUI: function(bounds) {
     var southwest = bounds.getSouthWest();
     var northeast = bounds.getNorthEast();
@@ -73,6 +77,7 @@ OSRM.Control.Map = L.Map.extend({
     bounds.extend( this.unproject(ne_point,zoom) );
     this.setViewBounds( bounds );
   },
+
   fitBoundsUI: function(bounds) {
     var southwest = bounds.getSouthWest();
     var northeast = bounds.getNorthEast();
@@ -90,6 +95,7 @@ OSRM.Control.Map = L.Map.extend({
     bounds.extend( this.unproject(ne_point,zoom) );
     this.fitBounds( bounds );
   },
+
   getBoundsUI: function(unbounded) {
     var bounds = this.getPixelBounds();
     if( OSRM.G.main_handle.boxVisible() )
@@ -98,6 +104,7 @@ OSRM.Control.Map = L.Map.extend({
       ne = this.unproject(new L.Point(bounds.max.x, bounds.min.y), this._zoom, true);
     return new L.LatLngBounds(sw, ne);
   },
+
   getCenterUI: function(unbounded) {
     var viewHalf = this.getSize();
     if( OSRM.G.main_handle.boxVisible() )
@@ -106,9 +113,9 @@ OSRM.Control.Map = L.Map.extend({
 
     return this.unproject(centerPoint, this._zoom, unbounded);
   },
+
   getActiveLayerId: function() {
     var tile_server_id = 0;
-
     var tile_servers = OSRM.DEFAULTS.TILE_SERVERS;
     var tile_server_name = this.layerControl.getActiveLayerName();
     for(var i=0, size=tile_servers.length; i<size; i++) {
@@ -117,7 +124,7 @@ OSRM.Control.Map = L.Map.extend({
         break;
       }
     }
-
     return tile_server_id;
   }
+
 });

@@ -27,32 +27,32 @@ OSRM.GLOBALS.localizable_maps = [];
 // [map initialization, event handling]
 OSRM.Map = {
 
-// map initialization
-init: function() {
-  // check if GUI is initialized!
-  if(OSRM.G.main_handle == null)
-    OSRM.GUI.init();
+  // map initialization
+  init: function() {
+    // check if GUI is initialized!
+    if(OSRM.G.main_handle == null)
+      OSRM.GUI.init();
 
-  // setup tile servers
-  var tile_servers = OSRM.DEFAULTS.TILE_SERVERS;
-  var base_maps = {};
-  for(var i=0, size=tile_servers.length; i<size; i++) {
-    tile_servers[i].options.attribution = tile_servers[i].attribution;
-    base_maps[ tile_servers[i].display_name ] = new L.TileLayer( tile_servers[i].url, tile_servers[i].options );
-    L.Util.stamp( base_maps[ tile_servers[i].display_name ] );      // stamp tile servers so that their order is correct in layers control
-  }
+    // setup tile servers
+    var tile_servers = OSRM.DEFAULTS.TILE_SERVERS;
+    var base_maps = {};
+    for(var i=0, size=tile_servers.length; i<size; i++) {
+      tile_servers[i].options.attribution = tile_servers[i].attribution;
+      base_maps[ tile_servers[i].display_name ] = new L.TileLayer( tile_servers[i].url, tile_servers[i].options );
+      L.Util.stamp( base_maps[ tile_servers[i].display_name ] );      // stamp tile servers so that their order is correct in layers control
+    }
 
-  // setup overlay servers
-  var overlay_servers = OSRM.DEFAULTS.OVERLAY_SERVERS;
-  var overlay_maps = {};
-  for(var i=0, size=overlay_servers.length; i<size; i++) {
-    overlay_servers[i].options.attribution = overlay_servers[i].attribution;
-    overlay_maps[ overlay_servers[i].display_name ] = new L.TileLayer( overlay_servers[i].url, overlay_servers[i].options );
-    L.Util.stamp( overlay_maps[ overlay_servers[i].display_name ] );      // stamp tile servers so that their order is correct in layers control
-  }
+    // setup overlay servers
+    var overlay_servers = OSRM.DEFAULTS.OVERLAY_SERVERS;
+    var overlay_maps = {};
+    for(var i=0, size=overlay_servers.length; i<size; i++) {
+      overlay_servers[i].options.attribution = overlay_servers[i].attribution;
+      overlay_maps[ overlay_servers[i].display_name ] = new L.TileLayer( overlay_servers[i].url, overlay_servers[i].options );
+      L.Util.stamp( overlay_maps[ overlay_servers[i].display_name ] );      // stamp tile servers so that their order is correct in layers control
+    }
 
-  // setup map
-  OSRM.G.map = new OSRM.Control.Map('map', {
+    // setup map
+    OSRM.G.map = new OSRM.Control.Map('map', {
       center: new L.LatLng(OSRM.DEFAULTS.ONLOAD_LATITUDE, OSRM.DEFAULTS.ONLOAD_LONGITUDE),
       zoom: OSRM.DEFAULTS.ONLOAD_ZOOM_LEVEL,
       layers: [],                      // add active layer later
@@ -61,85 +61,90 @@ init: function() {
       zoomControl: false,                  // use OSRM zoom buttons
       attributionControl: false,              // use OSRM attribution control
       worldCopyJump: true                  // keep in same world
-  });
+    });
 
-  // add attribution control
-  OSRM.G.map.attributionControl = new OSRM.Control.Attribution();
-  OSRM.G.map.attributionControl.addTo(OSRM.G.map);
+    // add attribution control
+    OSRM.G.map.attributionControl = new OSRM.Control.Attribution();
+    OSRM.G.map.attributionControl.addTo(OSRM.G.map);
 
-  // add locations control
-  OSRM.G.map.locationsControl = new OSRM.Control.Locations();
-  OSRM.G.map.locationsControl.addTo(OSRM.G.map);
+    // add locations control
+    OSRM.G.map.locationsControl = new OSRM.Control.Locations();
+    OSRM.G.map.locationsControl.addTo(OSRM.G.map);
 
-  // add active layer and layer control
-  OSRM.G.map.addLayer( base_maps[tile_servers[0].display_name] );
-  OSRM.G.map.layerControl = new OSRM.Control.Layers(base_maps, overlay_maps);
-  OSRM.G.map.layerControl.addTo(OSRM.G.map);
+    // add active layer and layer control
+    OSRM.G.map.addLayer( base_maps[tile_servers[0].display_name] );
+    OSRM.G.map.layerControl = new OSRM.Control.Layers(base_maps, overlay_maps);
+    OSRM.G.map.layerControl.addTo(OSRM.G.map);
 
-  // add zoom control
-  OSRM.G.map.zoomControl = new OSRM.Control.Zoom();
-  OSRM.G.map.zoomControl.addTo(OSRM.G.map);
-  OSRM.G.map.zoomControl.show();
+    // add zoom control
+    OSRM.G.map.zoomControl = new OSRM.Control.Zoom();
+    OSRM.G.map.zoomControl.addTo(OSRM.G.map);
+    OSRM.G.map.zoomControl.show();
 
-  // add scale control
-  OSRM.G.map.scaleControl = new L.Control.Scale();
-  OSRM.G.map.scaleControl.options.metric = (OSRM.G.DISTANCE_FORMAT != 1);
-  OSRM.G.map.scaleControl.options.imperial = (OSRM.G.DISTANCE_FORMAT == 1);
-  OSRM.G.map.scaleControl.addTo(OSRM.G.map);
+    // add scale control
+    OSRM.G.map.scaleControl = new L.Control.Scale();
+    OSRM.G.map.scaleControl.options.metric = (OSRM.G.DISTANCE_FORMAT != 1);
+    OSRM.G.map.scaleControl.options.imperial = (OSRM.G.DISTANCE_FORMAT == 1);
+    OSRM.G.map.scaleControl.addTo(OSRM.G.map);
 
-  // map events
-  OSRM.G.map.on('zoomend', OSRM.Map.zoomed );
-  OSRM.G.map.on('click', OSRM.Map.click );
-  OSRM.G.map.on('contextmenu', OSRM.Map.contextmenu );
-  OSRM.G.map.on('mousemove', OSRM.Map.mousemove );
-},
-initFinally: function() {
-  L.Util.setOptions( OSRM.G.map, {
-    zoomAnimation: true,
-    fadeAnimation: true
-  } );
-},
+    // map events
+    OSRM.G.map.on('zoomend', OSRM.Map.zoomed );
+    OSRM.G.map.on('click', OSRM.Map.click );
+    OSRM.G.map.on('contextmenu', OSRM.Map.contextmenu );
+    OSRM.G.map.on('mousemove', OSRM.Map.mousemove );
+  },
 
-// init map position and zoom (respect UI visibility / use browser geolocation)
-initPosition: function() {
-  var position = new L.LatLng( OSRM.DEFAULTS.ONLOAD_LATITUDE, OSRM.DEFAULTS.ONLOAD_LONGITUDE);
-  OSRM.G.map.setViewUI( position, OSRM.DEFAULTS.ONLOAD_ZOOM_LEVEL, true);
-  if (navigator.geolocation && document.URL.indexOf("file://") == -1)    // convenience: FF does not save access rights for local files
-    navigator.geolocation.getCurrentPosition(OSRM.Map.geolocationResponse);
-},
+  initFinally: function() {
+    L.Util.setOptions( OSRM.G.map, {
+      zoomAnimation: true,
+      fadeAnimation: true
+    });
+  },
 
-// map event handlers
-zoomed: function(e) {
-  // prevent redraw when zooming out less than 4 levels (no need to reduce route geometry data)
-  var delta_zoom = OSRM.G.route.getZoomLevel() - OSRM.G.map.getZoom();
-  if( delta_zoom >= 0 && delta_zoom <= 3 )
-    return;
-  // redraw routes
-  if(OSRM.G.dragging)
-    OSRM.Routing.getRoute_Dragging();
-  else
-    OSRM.Routing.getRoute_Redraw({keepAlternative:true});
-},
-contextmenu: function(e) {;},
-mousemove: function(e) { OSRM.Via.drawDragMarker(e); },
-click: function(e) {
-  OSRM.GUI.deactivateTooltip( "CLICKING" );
-  if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )  // only create/remove markers on simple clicks
-    return;
-  if( !OSRM.G.markers.hasSource() ) {
-    var index = OSRM.G.markers.setSource( e.latlng );
-    OSRM.Geocoder.updateAddress( OSRM.C.SOURCE_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
-    OSRM.G.markers.route[index].show();
-    OSRM.Routing.getRoute( {recenter:OSRM.G.markers.route.length == 2} );  // allow recentering when the route is first shown
-  } else if( !OSRM.G.markers.hasTarget() ) {
-    var index = OSRM.G.markers.setTarget( e.latlng );
-    OSRM.Geocoder.updateAddress( OSRM.C.TARGET_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
-    OSRM.G.markers.route[index].show();
-    OSRM.Routing.getRoute( {recenter:OSRM.G.markers.route.length == 2} );  // allow recentering when the route is first shown
+  // init map position and zoom (respect UI visibility / use browser geolocation)
+  initPosition: function() {
+    var position = new L.LatLng( OSRM.DEFAULTS.ONLOAD_LATITUDE, OSRM.DEFAULTS.ONLOAD_LONGITUDE);
+    OSRM.G.map.setViewUI( position, OSRM.DEFAULTS.ONLOAD_ZOOM_LEVEL, true);
+    if (navigator.geolocation && document.URL.indexOf("file://") == -1)    // convenience: FF does not save access rights for local files
+      navigator.geolocation.getCurrentPosition(OSRM.Map.geolocationResponse);
+  },
+
+  // map event handlers
+  zoomed: function(e) {
+    // prevent redraw when zooming out less than 4 levels (no need to reduce route geometry data)
+    var delta_zoom = OSRM.G.route.getZoomLevel() - OSRM.G.map.getZoom();
+    if( delta_zoom >= 0 && delta_zoom <= 3 )
+      return;
+    // redraw routes
+    if(OSRM.G.dragging)
+      OSRM.Routing.getRoute_Dragging();
+    else
+      OSRM.Routing.getRoute_Redraw({keepAlternative:true});
+  },
+
+  contextmenu: function(e) {;},
+  mousemove: function(e) { OSRM.Via.drawDragMarker(e); },
+
+  click: function(e) {
+    OSRM.GUI.deactivateTooltip( "CLICKING" );
+    if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )  // only create/remove markers on simple clicks
+      return;
+    if( !OSRM.G.markers.hasSource() ) {
+      var index = OSRM.G.markers.setSource( e.latlng );
+      OSRM.Geocoder.updateAddress( OSRM.C.SOURCE_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
+      OSRM.G.markers.route[index].show();
+      OSRM.Routing.getRoute( {recenter:OSRM.G.markers.route.length == 2} );  // allow recentering when the route is first shown
+    } else if( !OSRM.G.markers.hasTarget() ) {
+      var index = OSRM.G.markers.setTarget( e.latlng );
+      OSRM.Geocoder.updateAddress( OSRM.C.TARGET_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
+      OSRM.G.markers.route[index].show();
+      OSRM.Routing.getRoute( {recenter:OSRM.G.markers.route.length == 2} );  // allow recentering when the route is first shown
+    }
+  },
+
+  geolocationResponse: function(response) {
+    var latlng = new L.LatLng(response.coords.latitude, response.coords.longitude);
+    OSRM.G.map.setViewUI(latlng, OSRM.DEFAULTS.ZOOM_LEVEL );
   }
-},
-geolocationResponse: function(response) {
-  var latlng = new L.LatLng(response.coords.latitude, response.coords.longitude);
-  OSRM.G.map.setViewUI(latlng, OSRM.DEFAULTS.ZOOM_LEVEL );
-}
+
 };

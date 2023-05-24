@@ -26,15 +26,14 @@ OSRM.JSONP = {
   timeouts: {},
   timers: {},
 
-
   // default callback routines
   late: function() {},
   empty: function() {},
 
-
   // init JSONP call
   call: function(source, callback_function, timeout_function, timeout, id, parameters) {
     // only one active JSONP call per id
+    // console.log)'HJB: jsonp.call');
     if (OSRM.JSONP.fences[id] == true)
       return false;
     OSRM.JSONP.fences[id] = true;
@@ -64,10 +63,14 @@ OSRM.JSONP = {
       }
     };
 
+    console.log('HJB: callback 1', id)
+
     // clean DOM
     var jsonp = document.getElementById('jsonp_'+id);
     if(jsonp)
       jsonp.parentNode.removeChild(jsonp);
+
+    console.log('HJB: callback 2', jsonp)
 
     // add script to DOM
     var script = document.createElement('script');
@@ -76,8 +79,12 @@ OSRM.JSONP = {
     script.src = source.replace(/%jsonp/,"OSRM.JSONP.callbacks."+id);
     document.head.appendChild(script);
 
+    console.log('HJB: callback 3', script)
+
     // start timeout timer
     OSRM.JSONP.timers[id] = setTimeout(OSRM.JSONP.timeouts[id], timeout);
+
+    console.log('HJB: callback 4')
     return true;
   },
 

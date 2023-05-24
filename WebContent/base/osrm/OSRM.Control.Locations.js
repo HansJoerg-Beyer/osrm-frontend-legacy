@@ -18,6 +18,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // locations control
 // [navigation buttons for important locations - zoom on route, zoom on user]
 OSRM.Control.Locations = L.Control.extend({
+
   options: {
     position: 'topright'
   },
@@ -53,11 +54,14 @@ OSRM.Control.Locations = L.Control.extend({
   activateRoute: function() {
     this._routeButton.className = "box-content gui-control gui-locations-route";
   },
+
   deactivateRoute: function() {
     this._routeButton.className = "box-content gui-control-inactive gui-locations-route-inactive";
   },
+
   setTooltips: function( userButton, routeButton) {
     this._userButton.title = userButton;
     this._routeButton.title = routeButton;
   }
+  
 });

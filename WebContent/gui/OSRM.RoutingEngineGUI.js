@@ -21,59 +21,52 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 OSRM.GUI.extend( {
 
-// init
-init: function() {
+  // init
+  init: function() {
+    // gather routing engines
+    var options = OSRM.GUI.getRoutingEngines();
+    // generate selectors
+    OSRM.GUI.selectorInit("gui-engine-toggle", options, OSRM.DEFAULTS.ROUTING_ENGINE, OSRM.GUI._onRoutingEngineChanged);
+  },
+
+  // change active routing engine
+  setRoutingEngine: function(engine) {
+    if( engine == OSRM.G.active_routing_engine )
+      return;
+    OSRM.GUI.selectorChange( 'gui-engine-toggle', engine );
+    OSRM.G.active_routing_engine = engine;
+    OSRM.G.active_routing_metric = OSRM.DEFAULTS.ROUTING_ENGINES[ OSRM.G.active_routing_engine ].metric;;
+    OSRM.G.active_routing_server_url = OSRM.DEFAULTS.ROUTING_ENGINES[ OSRM.G.active_routing_engine ].url;
+    OSRM.G.active_routing_timestamp_url = OSRM.DEFAULTS.ROUTING_ENGINES[ OSRM.G.active_routing_engine ].timestamp;
+    // requery data timestamp
+    OSRM.GUI.queryDataTimestamp();
+  },
+
+  _onRoutingEngineChanged: function(engine) {
+    if( engine == OSRM.G.active_routing_engine )
+      return;
+    OSRM.GUI.setRoutingEngine( engine );
+    // requery route
+    if( OSRM.G.markers.route.length > 1 )
+      OSRM.Routing.getRoute();
+  },
+
+  // change language of routing engine entries
+  setRoutingEnginesLanguage: function() {
+    // gather routing engines
+    var options = OSRM.GUI.getRoutingEngines();
+    // change dropdown menu names
+    OSRM.GUI.selectorRenameOptions( "gui-engine-toggle", options );
+  },
+
   // gather routing engines
-  var options = OSRM.GUI.getRoutingEngines();
-
-  // generate selectors
-  OSRM.GUI.selectorInit("gui-engine-toggle", options, OSRM.DEFAULTS.ROUTING_ENGINE, OSRM.GUI._onRoutingEngineChanged);
-},
-
-// change active routing engine
-setRoutingEngine: function(engine) {
-  if( engine == OSRM.G.active_routing_engine )
-    return;
-
-  OSRM.GUI.selectorChange( 'gui-engine-toggle', engine );
-
-  OSRM.G.active_routing_engine = engine;
-  OSRM.G.active_routing_metric = OSRM.DEFAULTS.ROUTING_ENGINES[ OSRM.G.active_routing_engine ].metric;;
-  OSRM.G.active_routing_server_url = OSRM.DEFAULTS.ROUTING_ENGINES[ OSRM.G.active_routing_engine ].url;
-  OSRM.G.active_routing_timestamp_url = OSRM.DEFAULTS.ROUTING_ENGINES[ OSRM.G.active_routing_engine ].timestamp;
-
-  // requery data timestamp
-  OSRM.GUI.queryDataTimestamp();
-},
-_onRoutingEngineChanged: function(engine) {
-  if( engine == OSRM.G.active_routing_engine )
-    return;
-
-  OSRM.GUI.setRoutingEngine( engine );
-
-  // requery route
-  if( OSRM.G.markers.route.length > 1 )
-    OSRM.Routing.getRoute();
-},
-
-// change language of routing engine entries
-setRoutingEnginesLanguage: function() {
-  // gather routing engines
-  var options = OSRM.GUI.getRoutingEngines();
-
-  // change dropdown menu names
-  OSRM.GUI.selectorRenameOptions( "gui-engine-toggle", options );
-},
-
-// gather routing engines
-getRoutingEngines: function() {
-  var engines = OSRM.DEFAULTS.ROUTING_ENGINES;
-  var options = [];
-  for(var i=0, size=engines.length; i<size; i++) {
-    options.push( {display:OSRM.loc(engines[i].label), value:i} );
+  getRoutingEngines: function() {
+    var engines = OSRM.DEFAULTS.ROUTING_ENGINES;
+    var options = [];
+    for(var i=0, size=engines.length; i<size; i++) {
+      options.push( {display:OSRM.loc(engines[i].label), value:i} );
+    }
+    return options;
   }
-
-  return options;
-}
 
 });

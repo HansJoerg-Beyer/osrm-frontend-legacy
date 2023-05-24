@@ -49,6 +49,7 @@ OSRM.HistoryRoute = function() {
 };
 
 OSRM.extend( OSRM.HistoryRoute,{
+
   // switch history routes on/off
   activate: function() {
     this.storeHistoryRoute = this._storeHistoryRoute;
@@ -56,12 +57,11 @@ OSRM.extend( OSRM.HistoryRoute,{
     this.showHistoryRoutes = this._showHistoryRoutes;
     this.clearHistoryRoutes = this._clearHistoryRoutes;
     OSRM.G.map.on('zoomend', this._initiate_redrawHistory );
-
     this.storeHistoryRoute();
   },
+
   deactivate: function() {
     this.clearHistoryRoutes();
-
     this.storeHistoryRoute = this.empty;
     this.fetchHistoryRoute = this.empty;
     this.showHistoryRoutes = this.empty;
@@ -94,6 +94,7 @@ OSRM.extend( OSRM.HistoryRoute,{
       this._history[0].markers.push(position);
     }
   },
+
   _fetchHistoryRoute: function() {
     if( this._history[0].markers.length == 0 )
       return;
@@ -113,6 +114,7 @@ OSRM.extend( OSRM.HistoryRoute,{
     this._history[0].markers = [];
     this._history[0].checksum = null;
   },
+
   _showHistoryRoutes: function() {
     for(var i=1,size=this._history_length; i<size; i++) {
       this._history[i].route.setStyle( this._history_styles[i] );
@@ -120,6 +122,7 @@ OSRM.extend( OSRM.HistoryRoute,{
       OSRM.G.route.hideOldRoute();
     }
   },
+
   _clearHistoryRoutes: function() {
     for(var i=0,size=this._history_length; i<size; i++) {
       this._history[i].route.hide();
@@ -163,6 +166,7 @@ OSRM.extend( OSRM.HistoryRoute,{
     this._history[history_id].route.setPositions(positions);
     this._updateHints(response, history_id);
   },
+
   _getRoute_RedrawHistory: function() {
     for(var i=0,size=this._history_length; i<size; i++)
       if( this._history[i].markers.length > 0 ) {
@@ -187,6 +191,7 @@ OSRM.extend( OSRM.HistoryRoute,{
     }
     return source;
   },
+
   _updateHints: function(response, history_id) {
     this._history[history_id].checksum = response.hint_data.checksum;
 
@@ -194,4 +199,5 @@ OSRM.extend( OSRM.HistoryRoute,{
     for(var i=0; i<hints.length; i++)
       this._history[history_id].markers[i].hint = hints[i];
   }
+  
 });

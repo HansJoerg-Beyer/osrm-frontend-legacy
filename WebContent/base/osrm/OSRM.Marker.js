@@ -31,49 +31,61 @@ OSRM.Marker = function( label, style, position ) {
   this.shown = false;
   this.hint = null;
 };
-OSRM.extend( OSRM.Marker,{
-show: function() {
-  OSRM.G.map.addLayer(this.marker);
-  this.shown = true;
-},
-hide: function() {
-  OSRM.G.map.removeLayer(this.marker);
-  this.shown = false;
 
-  // revert highlighted description
-  if( this.label == "highlight" )
-  if( this.description ) {
-    var desc = document.getElementById("description-"+this.description);
-    desc &&  (desc.className = "description-body-item");
-    this.description = null;
+
+OSRM.extend( OSRM.Marker,{
+
+  show: function() {
+    OSRM.G.map.addLayer(this.marker);
+    this.shown = true;
+  },
+
+  hide: function() {
+    OSRM.G.map.removeLayer(this.marker);
+    this.shown = false;
+
+    // revert highlighted description
+    if( this.label == "highlight" )
+    if( this.description ) {
+      var desc = document.getElementById("description-"+this.description);
+      desc &&  (desc.className = "description-body-item");
+      this.description = null;
+    }
+  },
+
+  setPosition: function( position ) {
+    this.position = position;
+    this.marker.setLatLng( position );
+    this.hint = null;
+  },
+
+  getPosition: function() {
+    return this.position;
+  },
+
+  getLat: function() {
+    return this.position.lat;
+  },
+
+  getLng: function() {
+    var l = this.position.lng-360*Math.floor(this.position.lng/360+0.5);  // keep values in [-180,180]
+    return l;
+  },
+
+  isShown: function() {
+    return this.shown;
+  },
+
+  centerView: function(zoom) {
+    if( zoom == undefined )
+      zoom = OSRM.DEFAULTS.ZOOM_LEVEL;
+    OSRM.G.map.setViewUI( this.position, zoom );
+  },
+
+  toString: function() {
+    return "OSRM.Marker: \""+this.label+"\", "+this.position+")";
   }
-},
-setPosition: function( position ) {
-  this.position = position;
-  this.marker.setLatLng( position );
-  this.hint = null;
-},
-getPosition: function() {
-  return this.position;
-},
-getLat: function() {
-  return this.position.lat;
-},
-getLng: function() {
-  var l = this.position.lng-360*Math.floor(this.position.lng/360+0.5);  // keep values in [-180,180]
-  return l;
-},
-isShown: function() {
-  return this.shown;
-},
-centerView: function(zoom) {
-  if( zoom == undefined )
-    zoom = OSRM.DEFAULTS.ZOOM_LEVEL;
-  OSRM.G.map.setViewUI( this.position, zoom );
-},
-toString: function() {
-  return "OSRM.Marker: \""+this.label+"\", "+this.position+")";
-}
+
 });
 
 
@@ -83,70 +95,77 @@ OSRM.RouteMarker = function ( label, style, position ) {
   OSRM.RouteMarker.prototype.base.constructor.apply( this, arguments );
   this.label = label ? label : "route_marker";
 
-   this.marker.on( 'click', this.onClick );
-   this.marker.on( 'drag', this.onDrag );
-   this.marker.on( 'dragstart', this.onDragStart );
-   this.marker.on( 'dragend', this.onDragEnd );
+  this.marker.on( 'click', this.onClick );
+  this.marker.on( 'drag', this.onDrag );
+  this.marker.on( 'dragstart', this.onDragStart );
+  this.marker.on( 'dragend', this.onDragEnd );
 };
+
 OSRM.inheritFrom( OSRM.RouteMarker, OSRM.Marker );
+
 OSRM.extend( OSRM.RouteMarker, {
-onClick: function(e) {
-  if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )  // only remove markers on simple clicks
-    return;
-  for( var i=0; i<OSRM.G.markers.route.length; i++) {
-    if( OSRM.G.markers.route[i].marker === this ) {
-      OSRM.G.markers.removeMarker( i );
-      break;
+
+  onClick: function(e) {
+    if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )  // only remove markers on simple clicks
+      return;
+    for( var i=0; i<OSRM.G.markers.route.length; i++) {
+      if( OSRM.G.markers.route[i].marker === this ) {
+        OSRM.G.markers.removeMarker( i );
+        break;
+      }
     }
-  }
-
-  OSRM.Routing.getRoute();
-  OSRM.G.markers.highlight.hide();
-  OSRM.G.markers.dragger.hide();
-},
-onDrag: function(e) {
-  this.parent.setPosition( e.target.getLatLng() );
-  if(OSRM.G.markers.route.length>1)
-    OSRM.Routing.getRoute_Dragging();
-  OSRM.Geocoder.updateLocation( this.parent.label );
-},
-onDragStart: function(e) {
-  OSRM.GUI.deactivateTooltip( "DRAGGING" );
-  OSRM.G.dragging = true;
-  this.changeIcon(this.options.dragicon);
-  this.parent.description = null;
-
-  // store id of dragged marker
-  for( var i=0; i<OSRM.G.markers.route.length; i++)
-    if( OSRM.G.markers.route[i].marker === this ) {
-      OSRM.G.dragid = i;
-      break;
-    }
-
-  if( this.parent != OSRM.G.markers.highlight)
-    OSRM.G.markers.highlight.hide();
-  if( this.parent != OSRM.G.markers.dragger)
-    OSRM.G.markers.dragger.hide();
-  if (OSRM.G.route.isShown())
-    OSRM.G.route.showOldRoute();
-},
-onDragEnd: function(e) {
-  OSRM.G.dragging = false;
-  this.changeIcon(this.options.baseicon);
-
-  this.parent.setPosition( e.target.getLatLng() );
-  if (OSRM.G.route.isShown()) {
     OSRM.Routing.getRoute();
-    OSRM.G.route.hideOldRoute();
-    OSRM.G.route.hideUnnamedRoute();
-  } else {
-    OSRM.Geocoder.updateAddress(this.parent.label);
-    OSRM.GUI.clearResults();
+    OSRM.G.markers.highlight.hide();
+    OSRM.G.markers.dragger.hide();
+  },
+
+  onDrag: function(e) {
+    this.parent.setPosition( e.target.getLatLng() );
+    if(OSRM.G.markers.route.length>1)
+      OSRM.Routing.getRoute_Dragging();
+    OSRM.Geocoder.updateLocation( this.parent.label );
+  },
+
+  onDragStart: function(e) {
+    OSRM.GUI.deactivateTooltip( "DRAGGING" );
+    OSRM.G.dragging = true;
+    this.changeIcon(this.options.dragicon);
+    this.parent.description = null;
+
+    // store id of dragged marker
+    for( var i=0; i<OSRM.G.markers.route.length; i++)
+      if( OSRM.G.markers.route[i].marker === this ) {
+        OSRM.G.dragid = i;
+        break;
+      }
+
+    if( this.parent != OSRM.G.markers.highlight)
+      OSRM.G.markers.highlight.hide();
+    if( this.parent != OSRM.G.markers.dragger)
+      OSRM.G.markers.dragger.hide();
+    if (OSRM.G.route.isShown())
+      OSRM.G.route.showOldRoute();
+  },
+
+  onDragEnd: function(e) {
+    OSRM.G.dragging = false;
+    this.changeIcon(this.options.baseicon);
+
+    this.parent.setPosition( e.target.getLatLng() );
+    if (OSRM.G.route.isShown()) {
+      OSRM.Routing.getRoute();
+      OSRM.G.route.hideOldRoute();
+      OSRM.G.route.hideUnnamedRoute();
+    } else {
+      OSRM.Geocoder.updateAddress(this.parent.label);
+      OSRM.GUI.clearResults();
+    }
+  },
+
+  toString: function() {
+    return "OSRM.RouteMarker: \""+this.label+"\", "+this.position+")";
   }
-},
-toString: function() {
-  return "OSRM.RouteMarker: \""+this.label+"\", "+this.position+")";
-}
+
 });
 
 
@@ -155,36 +174,41 @@ OSRM.DragMarker = function ( label, style, position ) {
   OSRM.DragMarker.prototype.base.constructor.apply( this, arguments );
   this.label = label ? label : "drag_marker";
 };
+
 OSRM.inheritFrom( OSRM.DragMarker, OSRM.RouteMarker );
 OSRM.extend( OSRM.DragMarker, {
-onClick: function(e) {
-  if( this.parent != OSRM.G.markers.dragger)
-    this.parent.hide();
-  else {
+
+  onClick: function(e) {
+    if( this.parent != OSRM.G.markers.dragger)
+      this.parent.hide();
+    else {
+      var new_via_index = OSRM.Via.findViaIndex( e.target.getLatLng() );
+      OSRM.G.markers.route.splice(new_via_index+1,0, this.parent );
+      OSRM.RouteMarker.prototype.onDragStart.call(this,e);
+
+      OSRM.G.markers.route[OSRM.G.dragid] = new OSRM.RouteMarker(OSRM.C.VIA_LABEL, {draggable:true,icon:OSRM.G.icons['marker-via'],dragicon:OSRM.G.icons['marker-via-drag']}, e.target.getLatLng() );
+      OSRM.G.markers.route[OSRM.G.dragid].show();
+      OSRM.RouteMarker.prototype.onDragEnd.call(this,e);
+      this.parent.hide();
+    }
+  },
+
+  onDragStart: function(e) {
     var new_via_index = OSRM.Via.findViaIndex( e.target.getLatLng() );
     OSRM.G.markers.route.splice(new_via_index+1,0, this.parent );
-    OSRM.RouteMarker.prototype.onDragStart.call(this,e);
 
+    OSRM.RouteMarker.prototype.onDragStart.call(this,e);
+  },
+
+  onDragEnd: function(e) {
     OSRM.G.markers.route[OSRM.G.dragid] = new OSRM.RouteMarker(OSRM.C.VIA_LABEL, {draggable:true,icon:OSRM.G.icons['marker-via'],dragicon:OSRM.G.icons['marker-via-drag']}, e.target.getLatLng() );
     OSRM.G.markers.route[OSRM.G.dragid].show();
     OSRM.RouteMarker.prototype.onDragEnd.call(this,e);
     this.parent.hide();
+  },
+
+  toString: function() {
+    return "OSRM.DragMarker: \""+this.label+"\", "+this.position+")";
   }
-},
-onDragStart: function(e) {
-  var new_via_index = OSRM.Via.findViaIndex( e.target.getLatLng() );
-  OSRM.G.markers.route.splice(new_via_index+1,0, this.parent );
 
-  OSRM.RouteMarker.prototype.onDragStart.call(this,e);
-},
-onDragEnd: function(e) {
-  OSRM.G.markers.route[OSRM.G.dragid] = new OSRM.RouteMarker(OSRM.C.VIA_LABEL, {draggable:true,icon:OSRM.G.icons['marker-via'],dragicon:OSRM.G.icons['marker-via-drag']}, e.target.getLatLng() );
-  OSRM.G.markers.route[OSRM.G.dragid].show();
-
-  OSRM.RouteMarker.prototype.onDragEnd.call(this,e);
-  this.parent.hide();
-},
-toString: function() {
-  return "OSRM.DragMarker: \""+this.label+"\", "+this.position+")";
-}
 });

@@ -41,6 +41,7 @@ OSRM.Route.NOROUTE = true;
 OSRM.Route.ROUTE   = false;
 
 OSRM.extend( OSRM.Route,{
+
   // show/hide route
   showRoute: function(positions, noroute) {
     this._noroute = noroute;
@@ -57,6 +58,7 @@ OSRM.extend( OSRM.Route,{
     this._history.storeHistoryRoute();
     this._zoomlevel = OSRM.G.map.getZoom();
   },
+
   hideRoute: function() {
     this._current_route.hide();
     this._unnamed_route.hide();
@@ -77,9 +79,11 @@ OSRM.extend( OSRM.Route,{
     this._unnamed_route.setStyle( this._unnamed_route_style );
     this._unnamed_route.show();
   },
+
   hideUnnamedRoute: function() {
     this._unnamed_route.hide();
   },
+
   // TODO: hack to put unnamed_route above old_route -> easier way in will be available Leaflet 0.4
   _raiseUnnamedRoute: function() {
     if(this._unnamed_route.isShown()) {
@@ -100,6 +104,7 @@ OSRM.extend( OSRM.Route,{
     // change color of unnamed route highlighting - no separate object as dragged route does not have unnamed route highlighting
     this._unnamed_route.setStyle( this._old_unnamed_route_style );
   },
+
   hideOldRoute: function() {
     this._old_route.hide();
   },
@@ -110,6 +115,7 @@ OSRM.extend( OSRM.Route,{
     this._alternative_route.setStyle( this._alternative_route_style );
     this._alternative_route.show();
   },
+
   hideAlternativeRoute: function() {
     this._alternative_route.hide();
   },
@@ -118,15 +124,19 @@ OSRM.extend( OSRM.Route,{
   isShown: function() {
     return this._current_route.isShown();
   },
+
   isRoute: function() {
     return !(this._noroute);
   },
+
   getPositions: function() {
     return this._current_route.getPositions();
   },
+
   getPoints: function() {
     return this._current_route.getPoints();
   },
+
   getZoomLevel: function() {
     return this._zoomlevel;
   },
@@ -138,9 +148,11 @@ OSRM.extend( OSRM.Route,{
     this._noroute = OSRM.Route.ROUTE;
     this._history.clearHistoryRoutes();
   },
+
   fire: function(type,event) {
     this._current_route.route.fire(type,event);
   },
+
   centerView: function() {
     this._current_route.centerView();
   },
@@ -149,7 +161,9 @@ OSRM.extend( OSRM.Route,{
   activateHistoryRoutes: function() {
     this._history.activate();
   },
+
   deactivateHistoryRoutes: function() {
     this._history.deactivate();
   }
+
 });

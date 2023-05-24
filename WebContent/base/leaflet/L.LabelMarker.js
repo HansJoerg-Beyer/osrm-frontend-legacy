@@ -21,6 +21,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 // extended marker class
 L.LabelMarker = L.Marker.extend({
+
   // change marker icon
   changeIcon: function( icon ) {
     this.options.icon = icon;
@@ -57,4 +58,5 @@ L.LabelMarker = L.Marker.extend({
       L.DomUtil.addClass(this._icon, 'leaflet-clickable');
     }
   }
+
 });

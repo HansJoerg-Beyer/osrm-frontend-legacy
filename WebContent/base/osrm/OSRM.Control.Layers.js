@@ -33,6 +33,7 @@ OSRM.Control.Layers = L.Control.Layers.extend({
       }
     }
   },
+
   getActiveLayer: function () {
     var i, input, obj,
     inputs = this._form.getElementsByTagName('input'),
@@ -63,7 +64,6 @@ OSRM.Control.Layers = L.Control.Layers.extend({
         input.checked = true;
       }
     }
-
     this._onInputClick();
   },
 
@@ -104,10 +104,13 @@ OSRM.Control.Layers = L.Control.Layers.extend({
     this._separator.className = "gui-layers-separator";
     this._overlaysList.className = "gui-layers-overlays";
   },
+
   _expand: function () {
     L.DomUtil.addClass(this._container, 'gui-layers-expanded');
   },
+
   _collapse: function () {
     this._container.className = this._container.className.replace(' gui-layers-expanded', '');
   },
+  
 });
